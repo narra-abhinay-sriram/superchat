@@ -58,7 +58,7 @@ export default function ChatbotHeaderSmallScreen() {
   };
 
   return (
-    <div className={`${ 
+    <div className={`fixed z-10 w-full ${ 
         darkmode ? "bg-[#3A3B3C] text-white" : "bg-gray-300 text-gray-900"
       }`}>
       {/* Header Section */}

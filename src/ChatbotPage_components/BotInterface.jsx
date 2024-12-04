@@ -29,12 +29,14 @@ const BotInterface = () => {
   const fileInputRef = useRef(null);
   const messagesEndRef = useRef(null);
 
+
   const [activeToggle, setActiveToggle] = useState("chat");
   const [chatStarted, setChatStarted] = useState(false);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [showFileMenu, setShowFileMenu] = useState(false);
+  const [showTypeMenu, setShowTypeMenu] = useState(false);
 
   // Authentication Check
   if (!localStorage.getItem("token")) {
@@ -268,60 +270,122 @@ if (data.message)
   const renderInputArea = () => (
     <div className="fixed bottom-4 w-full max-w-3xl mx-auto px-4">
       <div className="flex items-center gap-4">
-        <div
-          className={`flex rounded-lg p-1 gap-1 ${
-            darkmode ? "bg-[#3A3A3A]" : "bg-gray-200"
-          }`}
-        >
+        {/* Responsive dropdown for small devices */}
+        <div className="sm:hidden relative">
+          <button 
+            className={`p-2 rounded-md ${
+              darkmode 
+                ? "bg-[#3A3A3A] text-white hover:bg-[#4A4A4A]" 
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+            }`}
+            onClick={() => setShowTypeMenu(!showTypeMenu)}
+          >
+            {activeToggle === "csv" ? (
+              <FaFileCsv className="w-5 h-5" />
+            ) : activeToggle === "pdf" ? (
+              <FaFileAlt className="w-5 h-5" />
+            ) : (
+              <FaComments className="w-5 h-5" />
+            )}
+          </button>
+          
+          {showTypeMenu && (
+            <div 
+              className={`absolute bottom-full left-0 mb-2 rounded-lg shadow-lg p-2 ${
+                darkmode 
+                  ? "bg-[#3A3A3A] text-white" 
+                  : "bg-white text-gray-800"
+              }`}
+            >
+              {[
+                { type: "csv", icon: FaFileCsv, label: "CSV File" },
+                { type: "pdf", icon: FaFileAlt, label: "PDF" },
+                { type: "chat", icon: FaComments, label: "Chat" }
+              ].map(({ type, icon: Icon, label }) => (
+                <button
+                  key={type}
+                  onClick={() => {
+                    setActiveToggle(type);
+                    setShowTypeMenu(false);
+                  }}
+                  className={`flex items-center w-full p-2 rounded-md mb-1 ${
+                    activeToggle === type 
+                      ? (darkmode 
+                        ? "bg-[#4A4A4A] text-white" 
+                        : "bg-gray-300 text-black")
+                      : (darkmode 
+                        ? "hover:bg-[#4A4A4A] text-gray-400" 
+                        : "hover:bg-gray-100 text-gray-700")
+                  }`}
+                >
+                  <Icon className="w-5 h-5 mr-2" />
+                  <span>{label}</span>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+  
+        {/* Existing toggle for sm and above */}
+        <div className="hidden sm:flex rounded-lg p-1 gap-1 bg-gray-200 dark:bg-[#3A3A3A]">
           {[
             { type: "csv", icon: FaFileCsv },
             { type: "pdf", icon: FaFileAlt },
             { type: "chat", icon: FaComments },
           ].map(({ type, icon: Icon }) => (
-            <button
-              key={type}
+            <button 
+              key={type} 
               onClick={() => setActiveToggle(type)}
               className={`p-2 rounded-md ${
                 activeToggle === type
-                  ? darkmode
-                    ? "bg-[#4A4A4A] text-white shadow-sm"
-                    : "bg-gray-300 text-black shadow-sm"
-                  : darkmode
-                  ? "hover:bg-[#3A3A3A] text-gray-400"
-                  : "hover:bg-gray-100 text-gray-700"
+                  ? "bg-gray-300 text-black shadow-sm dark:bg-[#4A4A4A] dark:text-white"
+                  : "hover:bg-gray-100 text-gray-700 dark:hover:bg-[#3A3A3A] dark:text-gray-400"
               }`}
             >
               <Icon className="w-5 h-5" />
             </button>
           ))}
         </div>
-
+  
+        {/* File attachment button */}
         <div className="relative">
-          <button
-            className={`p-2 ${darkmode ? "text-white" : "text-gray-600"} focus:outline-none`}
+          <button 
+            className={`p-2 ${
+              darkmode 
+                ? "text-white hover:bg-[#3A3A3A] rounded-md" 
+                : "text-gray-600 hover:bg-gray-100 rounded-md"
+            } focus:outline-none`} 
             onClick={() => setShowFileMenu(!showFileMenu)}
           >
             <FaPaperclip className="w-5 h-5" />
           </button>
           {showFileMenu && renderFileMenu()}
         </div>
-
-        <div
-          className={`flex-grow rounded-full relative ${
-            darkmode ? "bg-[#3A3A3A]" : "bg-gray-100"
-          }`}
-        >
-          <input
+  
+        {/* Input area */}
+        <div className={`flex-grow rounded-full relative ${
+          darkmode 
+            ? "bg-[#3A3A3A]" 
+            : "bg-gray-100"
+        }`}>
+          <input 
             type="text"
             value={message}
-            placeholder={activeToggle==="chat"?" Type your message here..":  activeToggle==="pdf" ? "Type questions regarding uploaded pdf..." :'Type questions regarding uploaded CSV file...' }
+            placeholder={
+              activeToggle === "chat" 
+                ? "Type your message here.."
+                : activeToggle === "pdf" 
+                ? "Type questions regarding uploaded pdf..."
+                : "Type questions regarding uploaded CSV file..."
+            }
             onChange={(e) => setMessage(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleChat(message)}
-            className="w-full rounded-full py-2 px-4 focus:outline-none border border-gray-600"
+            className="w-full rounded-full py-2 px-4 focus:outline-none border border-gray-600 dark:border-gray-700"
           />
         </div>
-
-        <button
+  
+        {/* Send button */}
+        <button 
           className={`p-3 rounded-full ${
             darkmode
               ? "bg-[#4A4A4A] hover:bg-[#5A5A5A] text-white"
@@ -337,7 +401,7 @@ if (data.message)
   // Main Render
   return (
     <div
-  className={`${
+  className={`pt-14  ${
     sidebarReduced ? "sm:ml-20" : "sm:ml-[230px]"
   } ${darkmode ? "bg-[#2C2C2C]" : "bg-white"} w-full sm:w-auto flex-1 flex flex-col items-center h-screen relative mx-auto`}
 >

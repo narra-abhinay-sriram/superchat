@@ -1,5 +1,5 @@
 import LandingPage__Left_Container from "./LandingPage__Left_Container";
-import LandingPage_Right_Container from "./LandingPage_Right_Container";
+//import LandingPage_Right_Container from "./LandingPage_Right_Container";
 
 
 export default function LandingPage_MainContainer() {
@@ -15,12 +15,12 @@ export default function LandingPage_MainContainer() {
         {/* Right side container */}
         <div className="sm:hidden">
           {/* Mobile view */}
-          <LandingPage_Right_Container />
+         {/* <LandingPage_Right_Container /> */}
         </div>
         <div className="hidden sm:block">
           {/* Desktop view */}
-          <LandingPage_Right_Container />
-        </div>
+         {/* <LandingPage_Right_Container /> */}
+         </div>
       </div>
     </div>
   );
