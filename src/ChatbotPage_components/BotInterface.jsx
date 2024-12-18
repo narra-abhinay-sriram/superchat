@@ -321,16 +321,16 @@ if (data.message)
           
           {showTypeMenu && (
             <div 
-              className={`absolute bottom-full left-0 mb-2 rounded-lg shadow-lg p-2 ${
+              className={`absolute bottom-full mb-2 rounded-lg shadow-lg p-2 ${
                 darkmode 
                   ? "bg-[#3A3A3A] text-white" 
                   : "bg-white text-gray-800"
               }`}
             >
               {[
-                { type: "csv", icon: FaFileCsv, label: "CSV File" },
-                { type: "pdf", icon: FaFileAlt, label: "PDF" },
-                { type: "chat", icon: FaComments, label: "Chat" }
+                { type: "csv", icon: GrDocumentCsv, label: "CSV File" },
+                { type: "pdf", icon: GrDocumentPdf, label: "PDF" },
+                { type: "chat", icon: BsChatText, label: "Chat" }
               ].map(({ type, icon: Icon, label }) => (
                 <button
                   key={type}
@@ -357,11 +357,11 @@ if (data.message)
         </div>
   
         {/* Existing toggle for sm and above */}
-        <div className="hidden sm:flex rounded-lg p-1 gap- bg-gray-200 dark:bg-[#3A3A3A]">
+        <div className="hidden sm:flex rounded-lg shadow-sm p-1 mx-5 gap-1 bg-white border-2 dark:bg-[#3A3A3A] m-4">
           {[
-            { type: "csv", icon: FaFileCsv },
-            { type: "pdf", icon: FaFileAlt },
-            { type: "chat", icon: FaComments },
+            { type: "csv", icon: GrDocumentCsv},
+            { type: "pdf", icon: GrDocumentPdf },
+            { type: "chat", icon: BsChatText },
           ].map(({ type, icon: Icon }) => (
             <button 
               key={type} 
