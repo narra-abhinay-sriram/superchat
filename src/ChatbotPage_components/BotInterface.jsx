@@ -3,8 +3,10 @@ import {
   FaComments,
   FaFileAlt,
   FaFileCsv,
+  FaMicrophone,
   FaPaperclip,
   FaPaperPlane,
+  FaRedoAlt,
   //FaImage,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +18,8 @@ import { ask_csv, ask_pdf, Chat_api, pdf_upload_api } from "../Utils/Apis";
 import { Capabilities, examples } from "../Utils/constants";
 import { logout } from "../ReduxStateManagement/authslice";
 import superchatLogo_white from "../assets/superchat_logo_white.png"
+import RenderLogo from "./BotInterface_components/RenderLogo";
+import { changeVoiceMode } from "../ReduxStateManagement/user";
 ///import useSubscribed from "../customHooks/useSubscribed";
 
 
@@ -37,7 +41,9 @@ const BotInterface = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showFileMenu, setShowFileMenu] = useState(false);
   const [showTypeMenu, setShowTypeMenu] = useState(false);
-
+  
+  
+  
   // Authentication Check
   if (!localStorage.getItem("token")) {
     navigate("/signup");
@@ -60,10 +66,12 @@ const BotInterface = () => {
 
   useEffect(() => {
     localStorage.setItem("messages", JSON.stringify(messages));
-    setMessage("");
   }, [messages]);
 
-
+const handlevoice=()=>{
+  console.log('hi')
+  dispatch(changeVoiceMode(true))
+}
 
   // Chat Handlers
   const handleChat = async (userMessage) => {
@@ -78,7 +86,8 @@ const BotInterface = () => {
         { type: "bot", content: "", isLoading: true },
       ]);
       setIsLoading(true);
-
+      localStorage.setItem('RegenerateMessage','')
+      localStorage.setItem('Error',false)
       const token = localStorage.getItem("token");
       const response = await fetch(endpoint, {
         method: "POST",
@@ -88,10 +97,13 @@ const BotInterface = () => {
          // "Set-Cookie":
 
         },
-        body: JSON.stringify({ user_input: userMessage }),
+        body: JSON.stringify({ user_input: userMessage,response_length:"medium" }),
       });
+console.log(response)
+     
 
-      const data = await response.json();
+  const data = await response.json();
+  console.log(data)
 if (data.message)
 {
   dispatch(logout());
@@ -107,8 +119,21 @@ if (data.message)
         )
       );
       setChatStarted(true);
+      setMessage('')
+      
+      
     } catch (error) {
-      console.error("Chat error:", error);
+      //console.error("Chat error:", error);
+     // console.log(error)
+      localStorage.setItem('RegenerateMessage',userMessage)
+    localStorage.setItem('Error',true)
+    setMessages((prev) =>
+      prev.map((msg, idx) =>
+        idx === prev.length - 1
+          ? {  isLoading: false }
+          : msg
+      )
+    );
       setMessages((prev) => [
         ...prev,
         {
@@ -116,6 +141,9 @@ if (data.message)
           content: "Error sending message. Please try again.",
         },
       ]);
+      setChatStarted(true);
+      setIsLoading(false);
+
     } finally {
       setIsLoading(false);
     }
@@ -133,6 +161,9 @@ if (data.message)
   };
 
   const handleFileUpload = async (event) => {
+    setMessage('')
+    localStorage.setItem('RegenerateMessage','')
+    localStorage.setItem('Error',false)
     const file = event.target.files[0];
     if (!file) {
       console.log("No file selected");
@@ -190,7 +221,8 @@ if (data.message)
       if (!uploadResponse.ok) {
         throw new Error(data.error || 'Upload failed');
       }
-  
+
+      
       setMessages((prev) =>
         prev.map((msg, idx) =>
           idx === prev.length - 1
@@ -200,7 +232,7 @@ if (data.message)
                 isLoading: false 
               }
             : msg
-        )
+        ) 
       );
       setChatStarted(true);
       
@@ -225,16 +257,7 @@ if (data.message)
   };
 
   // UI Components
-  const renderLogo = () => (
-    <div className="absolute flex justify-center items-center gap-0 top-44">
-      <img 
-      src={darkmode ? superchatLogo_white : superchatLogo}
-      alt="Superchat Logo" className="w-[40px] h-[45px]" />
-      <p className={`text-4xl py-1 bg-gradient-to-r ${darkmode ? " from-[#F5EEF8] to-[#D0D3D4]" : " from-[#6F036C] to-[#FF6F61E5]"} bg-clip-text text-transparent`}>
-              uperchat 
-            </p>
-    </div>
-  );
+  
   const renderFileMenu = () => (
     <div
       className={`absolute left-0 bottom-full mb-2 w-40 rounded-md shadow-md ${
@@ -268,7 +291,7 @@ if (data.message)
 
 
   const renderInputArea = () => (
-    <div className="fixed bottom-4 w-full max-w-3xl mx-auto px-4">
+    <div className="fixed bottom-4 w-full max-w-3xl mx-auto px-4 py-2">
       <div className="flex items-center gap-4">
         {/* Responsive dropdown for small devices */}
         <div className="sm:hidden relative">
@@ -327,7 +350,7 @@ if (data.message)
         </div>
   
         {/* Existing toggle for sm and above */}
-        <div className="hidden sm:flex rounded-lg p-1 gap-1 bg-gray-200 dark:bg-[#3A3A3A]">
+        <div className="hidden sm:flex rounded-lg p-1 gap- bg-gray-200 dark:bg-[#3A3A3A]">
           {[
             { type: "csv", icon: FaFileCsv },
             { type: "pdf", icon: FaFileAlt },
@@ -350,7 +373,7 @@ if (data.message)
         {/* File attachment button */}
         <div className="relative">
           <button 
-            className={`p-2 ${
+            className={`p ${
               darkmode 
                 ? "text-white hover:bg-[#3A3A3A] rounded-md" 
                 : "text-gray-600 hover:bg-gray-100 rounded-md"
@@ -363,7 +386,7 @@ if (data.message)
         </div>
   
         {/* Input area */}
-        <div className={`flex-grow rounded-full relative ${
+        <div className={` flex flex-grow rounded-full relative ${
           darkmode 
             ? "bg-[#3A3A3A]" 
             : "bg-gray-100"
@@ -382,9 +405,10 @@ if (data.message)
             onKeyDown={(e) => e.key === "Enter" && handleChat(message)}
             className="w-full rounded-full py-2 px-4 focus:outline-none border border-gray-600 dark:border-gray-700"
           />
+         
+          
         </div>
-  
-        {/* Send button */}
+       {/* Send button */}
         <button 
           className={`p-3 rounded-full ${
             darkmode
@@ -395,10 +419,22 @@ if (data.message)
         >
           <FaPaperPlane />
         </button>
+        <div>
+             <button className={`p-3 rounded-full ${
+              darkmode 
+                ? "text-white bg-[#4A4A4A] hover:bg-[#3A3A3A] " 
+                : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+            } focus:outline-none`} 
+            onClick={() => handlevoice()}
+             >
+               <FaMicrophone className="w-5 h-5"/>
+              </button>
+          </div>
       </div>
     </div>
   );
   // Main Render
+  
   return (
     <div
   className={`pt-14  ${
@@ -417,7 +453,7 @@ if (data.message)
           </div>
         ) : (
           <>
-            {renderLogo()}
+            {<RenderLogo/>}
             <div className="grid grid-cols-2 gap-8 mt-72 w-full px-20 flex-grow">
               <div className="hidden sm:block">
                 <h3 className={`font-semibold ${darkmode ? "text-gray-300" : "text-gray-800"} text-center`}>
@@ -426,7 +462,10 @@ if (data.message)
                 {examples.map((example, idx) => (
                   <button
                     key={idx}
-                    onClick={() => handleChat(example)}
+                    onClick={() =>{
+                      handleChat(message)
+                      setMessage(example)
+                    }}
                     className={`block ${
                       darkmode
                         ? "bg-[#3A3A3A] text-gray-300 hover:bg-[#4A4A4A]"
@@ -469,10 +508,28 @@ if (data.message)
             />
           ))}
           <div ref={messagesEndRef} />
+          {localStorage.getItem('Error')=='true' &&
+          <div className="flex items-center justify-center">
+              <button 
+          onClick={() => handleChat(localStorage.getItem('RegenerateMessage'))}
+          className={`flex items-center gap-2 px-4 py-2 rounded-md ${
+            darkmode 
+              ? "bg-[#4A4A4A] text-white hover:bg-[#5A5A5A]" 
+              : "bg-slate-700 text-gray-100 hover:bg-gray-500"
+          }`}
+        >
+          <FaRedoAlt />
+          Regenerate
+          
+        </button>
+
+            </div>
+            }
         </div>
       )}
 
       {renderInputArea()}
+      
 
       <input
         type="file"

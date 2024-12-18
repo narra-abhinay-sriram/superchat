@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Login_Api, Signup_api } from "../Utils/Apis";
 import { useDispatch } from "react-redux";
 import { login } from "../ReduxStateManagement/authslice";
+import { GoogleLogin } from "@react-oauth/google";
 
 export default function SignupPage() {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -114,7 +115,7 @@ export default function SignupPage() {
         </button>
 
         <p className="text-center text-gray-600 my-4">Or continue with</p>
-        <div className="flex justify-center gap-4">
+       {/* <div className="flex justify-center gap-4">
           <button
             disabled={loading}
             className="flex items-center border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50"
@@ -137,7 +138,7 @@ export default function SignupPage() {
             />
             Apple
           </button>
-        </div>
+        </div> */}
 
         <p className="text-center mt-4 text-sm flex flex-col sm:flex-row gap-2 justify-center">
           {loginhandle ? (

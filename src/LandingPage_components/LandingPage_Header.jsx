@@ -1,6 +1,7 @@
 import '@fontsource/inter';
 import '@fontsource/inter/600.css';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function LandingPage_Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,6 +10,7 @@ export default function LandingPage_Header() {
     <div className="flex justify-between items-center h-[60px] bg-slate-50 px-4">
       {/* Logo */}
       <div className="flex items-center">
+        <Link to={"/"}>
         <span
           className="sm:text-[22px] text-xl font-inter font-semibold bg-clip-text text-transparent cursor-pointer"
           style={{
@@ -18,14 +20,15 @@ export default function LandingPage_Header() {
           }}
         >
           Superchat LLC
-        </span>
+        </span></Link>
+
       </div>
 
       {/* Navigation Links */}
       <div className="hidden md:flex space-x-6 text-custom-purple text-[18px] font-medium">
         <span className="hover:underline cursor-pointer">For Businesses</span>
         <span className="hover:underline cursor-pointer">For Developers</span>
-        <span className="hover:underline cursor-pointer">FAQ</span>
+        <span className="hover:underline cursor-pointer">Super Chip</span>
       </div>
 
       {/* Hamburger Menu */}
@@ -57,7 +60,7 @@ export default function LandingPage_Header() {
             className="hover:underline cursor-pointer text-custom-purple text-[18px]"
             onClick={() => setIsMenuOpen(false)}
           >
-            FAQ
+            Super Chip
           </span>
         </div>
       )}

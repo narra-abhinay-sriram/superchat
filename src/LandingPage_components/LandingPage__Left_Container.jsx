@@ -38,13 +38,13 @@ export default function LandingPage__Left_Container() {
         <p className="sm:text-[22px] text-md font-[500] sm:mb-2">
           Accelerate Conversations, Power Through Data
         </p>
-        <p className="sm:text-[18px] text-sm sm:w-96 w-60  sm:text-slate-700 text-gray-500 font-light">
-          Chat to analyze, create, organize, and more with Superchat AI.
+        <p className="sm:text-[18px] text-sm sm:w-[500px] w-96  sm:text-slate-700 text-gray-500 font-light">
+          Chat with AI, Create Code, Teach yourself new things, Analyze your documents, Summarize large documents, Query documents, images and more ...
         </p>
       </div>
 
       
-      <div className="absolute sm:top-[360px]  sm:left-[110px] left-[15px] top-[280px] flex items-center gap-2">
+      <div className="absolute sm:top-[360px]  sm:left-[102px] left-[15px] top-[310px] flex items-center gap-2">
         <p 
           className=" hover:cursor-pointer sm:text-[20px] text-[18px] font-[500] bg-gradient-to-r from-[#6F036C] to-[#FF6F61E5] bg-clip-text text-transparent"
           onClick={()=>{

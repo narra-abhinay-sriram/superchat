@@ -6,3 +6,5 @@ export const pdf_upload_api="https://suitable-jolly-falcon.ngrok-free.app/upload
 export const ask_pdf="https://suitable-jolly-falcon.ngrok-free.app/ask_pdf"
 export const ask_csv="https://suitable-jolly-falcon.ngrok-free.app/ask_csv"
 export const ask_user_details="https://suitable-jolly-falcon.ngrok-free.app/get_subscription"
+export const Transcript_api = "https://suitable-jolly-falcon.ngrok-free.app/transcript"
+export const Voice_api = "https://suitable-jolly-falcon.ngrok-free.app/voice"

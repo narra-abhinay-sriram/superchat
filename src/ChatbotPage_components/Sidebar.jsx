@@ -109,13 +109,13 @@ const handleclearconversations=async()=>{
       {/* Menu Items */}
       <div className="flex flex-col items-start px-4 mt-auto mb-4">
         {/* Settings */}
-        <div className="relative group mb-4 w-full">
+      {/*  <div className="relative group mb-4 w-full">
           <div className={menuItemClass(sidebarReduced)}>
             <FaCog />
             {!sidebarReduced && <span>Settings</span>}
           </div>
           {sidebarReduced && <div className={tooltipClass}>Settings</div>}
-        </div>
+        </div> */}
 
         {/* Dark Mode Toggle */}
         <div className="relative group mb-4 w-full">
@@ -161,6 +161,7 @@ const handleclearconversations=async()=>{
         </div>
 
         {/* Updates & FAQ */}
+        {/*
         <div className="relative group mb-4 w-full">
           <div className={menuItemClass(sidebarReduced)}>
             <FaBell />
@@ -168,7 +169,7 @@ const handleclearconversations=async()=>{
           </div>
           {sidebarReduced && <div className={tooltipClass}>Updates & FAQ</div>}
         </div>
-
+         */}
         {/* Logout */}
         <div className="flex justify-start w-full">
           {sidebarReduced ? (
