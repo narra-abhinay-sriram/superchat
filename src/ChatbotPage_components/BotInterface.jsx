@@ -255,17 +255,6 @@ if (data.message)
   // UI Components
   
   const renderFileMenu = () => (
-    const renderLogo = () => (
-    <div className="absolute flex justify-center items-center gap-0" style={{ marginTop: "100px" }}>
-      <img 
-      src={darkmode ? superchatLogo_white : superchatLogo}
-      alt="Superchat Logo" className="w-[60px] h-[65px]" />
-      <p className={`text-5xl py-1 bg-gradient-to-r ${darkmode ? " from-[#F5EEF8] to-[#D0D3D4]" : " from-[#6F036C] to-[#FF6F61E5]"} bg-clip-text text-transparent`}>
-              uperchat 
-            </p>
-    </div>
-  );
-  
     <div
       className={`absolute left-0 bottom-full mb-2 w-40 rounded-md shadow-md ${
         darkmode ? "bg-[#3A3A3A] text-gray-300" : "bg-gray-100 text-black"
