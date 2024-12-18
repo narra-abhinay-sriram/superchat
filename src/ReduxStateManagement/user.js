@@ -5,7 +5,8 @@ const userslice=createSlice({
     initialState:{
         darkmode:localStorage.getItem("darkmode"),
         sidebarReduced:true,
-        voiceMode:false,
+        userEmail:null,
+        userSubscription:null
     },
     reducers:{
         changetodarkmode:(state,action)=>{
@@ -19,15 +20,12 @@ const userslice=createSlice({
         },
         uploadsubscription:(state,action)=>{
             state.userSubscription=action.payload
-        },
-        changeVoiceMode:(state,action)=>{
-            state.voiceMode=action.payload
         }
         
         
     }
 })
 
-export const{changetodarkmode,changesidebarwidth,uploadsubscription,uploaduserEmail,changeVoiceMode}=userslice.actions
+export const{changetodarkmode,changesidebarwidth,uploadsubscription,uploaduserEmail}=userslice.actions
 
 export default userslice.reducer

@@ -2,17 +2,9 @@ import BotInterface from "../ChatbotPage_components/BotInterface";
 import Sidebar from "../ChatbotPage_components/Sidebar";
 import ChatbotHeaderSmallScreen from "../ChatbotPage_components/ChatbotHeaderSmallScreen";
 import useIsSmallScreen from "../customHooks/useIsSmallScreen";
-import { useSelector } from "react-redux";
-import VoiceInterface from "../ChatbotPage_components/BotInterface_components/VoiceInterface";
 
-export default function ChatbotInterface() {
+export default function Chatbot_Interface() {
   const isSmallScreen = useIsSmallScreen();
-  const { voiceMode } = useSelector((store) => store.user);
-
-  // If voice mode is active, replace everything with VoiceInterface
-  if (voiceMode) {
-    return <VoiceInterface />;
-  }
 
   return (
     <div className={`w-full h-screen ${isSmallScreen ? "flex flex-col" : "flex flex-row"}`}>
@@ -25,9 +17,8 @@ export default function ChatbotInterface() {
           <Sidebar />
         </div>
       )}
-
       {/* BotInterface takes full space regardless of screen size */}
-      <BotInterface />
+        <BotInterface />
     </div>
   );
 }
