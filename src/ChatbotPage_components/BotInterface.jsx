@@ -1,14 +1,10 @@
 import { useEffect, useState, useRef } from "react";
-import {
-  FaComments,
-  FaFileAlt,
-  FaFileCsv,
-  FaMicrophone,
-  FaPaperclip,
-  FaPaperPlane,
-  FaRedoAlt,
-  //FaImage,
-} from "react-icons/fa";
+import { IoSend } from "react-icons/io5";
+import { PiPaperclipBold } from "react-icons/pi";
+import { BsChatText } from "react-icons/bs";
+import { GrDocumentCsv } from "react-icons/gr";
+import { GrDocumentPdf } from "react-icons/gr";
+
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
