@@ -272,8 +272,8 @@ if (data.message)
       }`}
     >
       {[
-        { type: "pdf", icon: FaFileAlt, label: "PDF" },
-        { type: "csv", icon: FaFileCsv, label: "CSV" },
+        { type: "pdf", icon: GrDocumentPdf, label: "PDF" },
+        { type: "csv", icon: GrDocumentCsv, label: "CSV" },
       ].map(({ type, icon: Icon, label }) => (
         <button
           key={type}
@@ -298,12 +298,12 @@ if (data.message)
 
 
   const renderInputArea = () => (
-    <div className="fixed bottom-4 w-full max-w-3xl mx-auto px-4 py-2">
-      <div className="flex items-center gap-4">
+    <div className="fixed bottom-4 w-full max-w-4xl mr-20">
+      <div className="flex items-center gap-0">
         {/* Responsive dropdown for small devices */}
         <div className="sm:hidden relative">
           <button 
-            className={`p-2 rounded-md ${
+            className={`p-2 ${
               darkmode 
                 ? "bg-[#3A3A3A] text-white hover:bg-[#4A4A4A]" 
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -311,11 +311,11 @@ if (data.message)
             onClick={() => setShowTypeMenu(!showTypeMenu)}
           >
             {activeToggle === "csv" ? (
-              <FaFileCsv className="w-5 h-5" />
+              <GrDocumentCsv className="w-5 h-5 bg-gray-600" />
             ) : activeToggle === "pdf" ? (
-              <FaFileAlt className="w-5 h-5" />
+              <GrDocumentPdf className="w-5 h-5 bg-gray-600" />
             ) : (
-              <FaComments className="w-5 h-5" />
+              <BsChatText className="w-5 h-5" />
             )}
           </button>
           
