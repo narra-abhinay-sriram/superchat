@@ -8,9 +8,10 @@ import Contactus from "./LandingPage_components/LandingPage_Footer_Components/Co
 import Terms_Conditions from "./LandingPage_components/LandingPage_Footer_Components/Terms_Conditions";
 import Cancellation_refund_policies from "./LandingPage_components/LandingPage_Footer_Components/Cancellation_refund_policies";
 import Privacy_policy from "./LandingPage_components/LandingPage_Footer_Components/Privacy_policy";
+import For_developers from "./LandingPage_components/LandingPage_header_components/For_developers";
 function App() {
   return (
-    <BrowserRouter basename="/latest" > {/* Ensure the basename matches your subdirectory */}
+    <BrowserRouter  > {/* Ensure the basename matches your subdirectory */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignupPage />} />
@@ -21,6 +22,7 @@ function App() {
          <Route path="/terms" element={<Terms_Conditions/>} />
          <Route path="/cancellation" element={<Cancellation_refund_policies/>} />
          <Route path="/privacy" element={<Privacy_policy/>}/>
+         <Route path="/fordevelopers" element={<For_developers/>} />
 
 
       </Routes>

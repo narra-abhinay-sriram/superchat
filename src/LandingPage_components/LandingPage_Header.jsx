@@ -27,7 +27,9 @@ export default function LandingPage_Header() {
       {/* Navigation Links */}
       <div className="hidden md:flex space-x-6 text-custom-purple text-[18px] font-medium">
         <span className="hover:underline cursor-pointer">For Businesses</span>
+        <Link to={'/fordevelopers'}>
         <span className="hover:underline cursor-pointer">For Developers</span>
+        </Link>
         <span className="hover:underline cursor-pointer">Super Chip</span>
       </div>
 
@@ -44,18 +46,22 @@ export default function LandingPage_Header() {
       {/* Dropdown Menu */}
       {isMenuOpen && (
         <div className="absolute top-[60px] right-0 w-full bg-white shadow-lg flex flex-col items-center space-y-4 p-4 md:hidden">
+         
           <span
             className="hover:underline cursor-pointer text-custom-purple text-[18px]"
             onClick={() => setIsMenuOpen(false)}
           >
             For Businesses
           </span>
+          <Link to={'/fordevelopers'}>
           <span
             className="hover:underline cursor-pointer text-custom-purple text-[18px]"
             onClick={() => setIsMenuOpen(false)}
           >
             For Developers
           </span>
+          </Link>
+         
           <span
             className="hover:underline cursor-pointer text-custom-purple text-[18px]"
             onClick={() => setIsMenuOpen(false)}
