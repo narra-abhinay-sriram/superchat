@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import LandingPage_Header from '../LandingPage_Header';
+import Contact_form_submit from './Contact_form_submit';
 
 export default function Contactus() {
   const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ export default function Contactus() {
     Address: '',
     message: ''
   });
+  const [success,setsuccess]=useState(false)
 
   const handleChange = (e) => {
     setFormData({
@@ -32,7 +34,7 @@ export default function Contactus() {
       const result = await response.json();
 
       if (result.success) {
-        alert('Message sent successfully!');
+        setsuccess(true)
         setFormData({
           name: '',
           age: '',
@@ -53,6 +55,7 @@ export default function Contactus() {
     <div className="min-h-screen bg-gray-50">
       <LandingPage_Header />
       
+    { success ? <Contact_form_submit /> :
       <div className="max-w-md mx-auto px-4 py-12">
         <div className="bg-white rounded-lg shadow-lg p-6 sm:p-8">
           <h1 className="text-2xl font-bold text-slate-900 mb-6 text-center">Contact Us</h1>
@@ -194,6 +197,7 @@ export default function Contactus() {
           </form>
         </div>
       </div>
+    }
     </div>
   );
 }

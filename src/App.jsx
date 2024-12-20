@@ -11,7 +11,7 @@ import Privacy_policy from "./LandingPage_components/LandingPage_Footer_Componen
 import For_developers from "./LandingPage_components/LandingPage_header_components/For_developers";
 function App() {
   return (
-    <BrowserRouter  > {/* Ensure the basename matches your subdirectory */}
+    <BrowserRouter   > {/* Ensure the basename matches your subdirectory */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignupPage />} />
