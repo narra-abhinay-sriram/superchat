@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import superchatLogo from "../assets/superchat_logo.png";
 import Chatbot_Message from "./Chatbot_message";
 import { ask_csv, ask_pdf, Chat_api, pdf_upload_api } from "../Utils/Apis";
-import { Capabilities, examples } from "../Utils/constants";
+import { Capabilities, questionSets } from "../Utils/constants";
 import { logout } from "../ReduxStateManagement/authslice";
 import superchatLogo_white from "../assets/superchat_logo_white.png"
 import RenderLogo from "./BotInterface_components/RenderLogo";
@@ -32,8 +32,6 @@ const BotInterface = () => {
   const { darkmode, sidebarReduced } = useSelector((store) => store.user);
   const fileInputRef = useRef(null);
   const messagesEndRef = useRef(null);
-
-
   const [activeToggle, setActiveToggle] = useState("chat");
   const [chatStarted, setChatStarted] = useState(false);
   const [message, setMessage] = useState("");
@@ -41,6 +39,12 @@ const BotInterface = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showFileMenu, setShowFileMenu] = useState(false);
   const [showTypeMenu, setShowTypeMenu] = useState(false);
+  const [selectedSet, setSelectedSet] = useState(() => {
+    // Initialize with a random set during the first render
+    const randomIndex = Math.floor(Math.random() * questionSets.length);
+    return questionSets[randomIndex];
+  });
+
   
   
   
@@ -459,14 +463,14 @@ if (data.message)
                 <h3 className={`font-semibold ${darkmode ? "text-gray-300" : "text-gray-800"} text-center`}>
                   Examples
                 </h3>
-                {examples.map((example, idx) => (
+                {selectedSet.examples.map((example, idx) => (
                   <button
                     key={idx}
                     onClick={() =>{
                       handleChat(message)
                       setMessage(example)
                     }}
-                    className={`block ${
+                    className={`block text-center ${
                       darkmode
                         ? "bg-[#3A3A3A] text-gray-300 hover:bg-[#4A4A4A]"
                         : "bg-gray-100 text-black hover:bg-gray-200"

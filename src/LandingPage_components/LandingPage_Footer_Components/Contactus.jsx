@@ -23,7 +23,7 @@ export default function Contactus() {
     e.preventDefault();
 
     try {
-      const response = await fetch('/latest/contact-handler.php', {  // Correct path to the PHP handler
+      const response = await fetch('/contact-handler.php', {  // Correct path to the PHP handler
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

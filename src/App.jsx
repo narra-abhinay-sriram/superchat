@@ -1,4 +1,4 @@
-import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import SignupPage from "./pages/SignupPage";
 import Chatbot_Interface from "./pages/Chatbot_Interface";
@@ -11,7 +11,7 @@ import Privacy_policy from "./LandingPage_components/LandingPage_Footer_Componen
 import For_developers from "./LandingPage_components/LandingPage_header_components/For_developers";
 function App() {
   return (
-    <BrowserRouter   > {/* Ensure the basename matches your subdirectory */}
+    <BrowserRouter basename="/"  > {/* Ensure the basename matches your subdirectory */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignupPage />} />
