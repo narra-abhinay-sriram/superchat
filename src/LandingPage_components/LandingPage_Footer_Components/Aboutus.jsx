@@ -43,10 +43,7 @@ export default function Aboutus() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className=" py-4">
         <LandingPage_Footer />
-      </footer>
     </div>
   );
 }

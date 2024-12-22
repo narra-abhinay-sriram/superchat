@@ -46,15 +46,20 @@ const handleclearconversations=async()=>{
       "Content-Type":"application/json" 
     }
   })
-  const data=await resp.json()
-  if(data.message)
-  {
-    localStorage.removeItem("messages")
-    window.location.reload()
-    
-    alert("Conversations cleared successfully")
 
-  }
+  const data=await resp.json()
+   if (data.message=='Token has expired!')
+        {
+          dispatch(logout());
+          localStorage.removeItem("messages")
+        
+          navigate("/signup");
+          return;
+        }
+        localStorage.removeItem('messages');
+        window.location.reload()
+
+        alert('Conversations cleared successfully');
   }catch(e){
     alert(e)
   }

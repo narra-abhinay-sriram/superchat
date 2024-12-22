@@ -48,10 +48,20 @@ export default function ChatbotHeaderSmallScreen() {
         },
       });
       const data = await resp.json();
-      if (data.message) {
+      if (data.message=='Token has expired!')
+        {
+          dispatch(logout());
+          localStorage.removeItem("messages")
+        
+          navigate("/signup");
+          return;
+        }
         localStorage.removeItem('messages');
+        window.location.reload()
+
         alert('Conversations cleared successfully');
-      }
+
+      
     } catch (e) {
       alert(e);
     }
