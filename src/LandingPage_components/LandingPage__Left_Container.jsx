@@ -29,7 +29,7 @@ export default function LandingPage__Left_Container() {
 
         />
         <p
-          className="font-inter font-[380] py-1 ml- text-left leading-[100px] sm:text-[90px] text-[45px] bg-gradient-to-r from-[#6F036C] to-[#FF6F61E5] bg-clip-text text-transparent">
+          className="font-inter font-[350] py-1 ml- text-left leading-[100px] sm:text-[90px] text-[40px] bg-gradient-to-r from-[#6F036C] to-[#FF6F61E5] bg-clip-text text-transparent">
           uper<span className="ml-1 mr-1">{dynamicWord}</span>
         </p>
       </div>
@@ -38,7 +38,7 @@ export default function LandingPage__Left_Container() {
         <p className="sm:text-[22px] text-md font-[500] sm:mb-2">
           Accelerate Conversations, Power Through Data
         </p>
-        <p className="sm:text-[18px] text-sm sm:w-[500px] w-96  sm:text-slate-700 text-gray-500 font-light">
+        <p className="sm:text-[18px] text-sm sm:w-[500px] w-fit  sm:text-slate-700 text-gray-500 font-light">
           Chat with AI, Create Code, Teach yourself new things, Analyze your documents, Summarize large documents, Query documents, images and more ...
         </p>
       </div>
