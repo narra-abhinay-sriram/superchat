@@ -1,15 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../ReduxStateManagement/authslice";
 import { useNavigate } from "react-router-dom";
+import { IoSettingsOutline } from "react-icons/io5";
+import { MdOutlineDarkMode } from "react-icons/md";
+import { MdLogout } from "react-icons/md";
+import {
+  RiDeleteBin6Line,
+  RiShareBoxLine
+ } from "react-icons/ri";
 import {
   FaArrowLeft,
   FaArrowRight,
-  FaCog,
-  FaMoon,
   FaSun,
-  FaTrashAlt,
-  FaBell,
-  FaUserCircle,
 } from "react-icons/fa";
 import superchatLogo from "../assets/superchat_logo.png";
 import { changesidebarwidth, changetodarkmode } from "../ReduxStateManagement/user";
@@ -30,7 +32,7 @@ const Sidebar = () => {
   const menuItemClass = (sidebarReduced) =>
     `p-3 rounded-full flex items-center cursor-pointer ${
       sidebarReduced
-        ? "justify-center bg-gray-700 text-white"
+        ? "justify-center text-black"
         :` gap-2 hover:bg-gray-300 ${
             darkmode ? "hover:bg-gray-600 text-white" : "text-gray-600"
           }`
@@ -65,65 +67,77 @@ const handleclearconversations=async()=>{
   }
 }
   return (
-    <div
-      className={`  ${ 
-        darkmode ? "bg-[#3A3B3C] text-white" : "bg-gray-300 text-gray-900"
-      } h-screen flex flex-col  ${
-        sidebarReduced ? "w-20" : "w-[230px]"
-      } fixed top-0 left-0 z-10 `}
+<div
+          className={`  ${ 
+           darkmode ? "bg-[#3A3B3C] text-white" : "bg-gray-100 text-gray-900"
+          } h-screen flex flex-col  ${
+            sidebarReduced ? "w-20" : "w-[230px]"
+          } fixed top-0 left-0 z-10 `}
+        >
+           {/* Logo Section */}
+           <div className="flex items-center justify-between mt-20 px-2">
+              {/* Logo (when collapsed) */}
+            {sidebarReduced && (
+             <div className="flex justify-center items-center">
+              <img
+                  src={darkmode ? superchatLogo_white : superchatLogo}
+                  alt="Superchat Logo"
+                  className="w-7 h-7"
+               />
+             </div>
+  )}
+
+     {/* Superchat LLC Text (when expanded) */}
+  {!sidebarReduced && (
+    <p
+      className={`text-xl font-bold bg-gradient-to-r ml-4 ${
+        darkmode
+          ? "from-[#F5EEF8] to-[#D0D3D4]"
+          : "from-[#6F036C] to-[#FF6F61E5]"
+      } bg-clip-text text-transparent`}
     >
-      {/* Logo Section */}
-      {sidebarReduced && (
-  <div className="flex justify-center">
-    <img
-      src={darkmode ? superchatLogo_white : superchatLogo}
-      alt="Superchat Logo"
-      className="w-10 h-10 ml-4 mt-4"
-    />
-  </div>
-)}
+      Superchat LLC
+    </p>
+  )}
 
-      {/* Expand/Collapse Button */}
-      <div className="flex items-center justify-center p-4">
-        <div className="flex items-center justify-between w-full">
-          {!sidebarReduced && (
-            <p className={`text-xl font-bold bg-gradient-to-r ${darkmode ? " from-[#F5EEF8] to-[#D0D3D4]" : " from-[#6F036C] to-[#FF6F61E5]"} bg-clip-text text-transparent`}>
-              Superchat LLC
-            </p>
-          )}
-          <div className="relative group ml-auto">
-            <div
-              onClick={toggleSidebar}
-              className={`p-2 rounded-full cursor-pointer ${
-                darkmode ? "bg-gray-100 text-black" : "bg-gray-800 text-white"
-              }`}
-            >
-              {sidebarReduced ? <FaArrowRight /> : <FaArrowLeft />}
-            </div>
-            <div
-              className={`${tooltipClass} ${
-                sidebarReduced ? "left-" : "right-"
-              }`}
-            >
-              {sidebarReduced ? "Expand " : "Collapse "}
-            </div>
-          </div>
-        </div>
-      </div>
-
+     {/* Expand/Collapse Button */}
+      <div className="relative group ml-4">
+    <div
+      onClick={toggleSidebar}
+      className={`flex items-center justify-center w-6 h-6 p-1 rounded-full cursor-pointer ${//
+         darkmode ? "bg-gray-100 text-black" : "bg-gray-800 text-white"
+      }`}
+      style={{ fontSize: "0.75rem" }}//
+     >
+      {sidebarReduced ? <FaArrowRight /> : <FaArrowLeft />}
+     </div>
+     </div>
+      </div>   
       {/* Menu Items */}
-      <div className="flex flex-col items-start px-4 mt-auto mb-4">
+      <div className="flex flex-col items-start px-0 py-0 mt-auto mb-1 text-black-900 text-sm">
         {/* Settings */}
-      {/*  <div className="relative group mb-4 w-full">
+       <div className="h-10 relative group mb-0 text-black w-full">
           <div className={menuItemClass(sidebarReduced)}>
-            <FaCog />
-            {!sidebarReduced && <span>Settings</span>}
+            <IoSettingsOutline  className={`text-lg flex gap-2 items-center justify-center cursor-pointer  ${
+              darkmode ? "text-white " : "text-black"
+            }`} 
+            style={{
+              color: darkmode ? "#FFFFFF" : "#000000",
+              filter: darkmode ? "none" : "brightness(0.9)",
+            }}
+            />
+            {!sidebarReduced && (
+              <span className={`${darkmode ? "text-white" : "text-black"}`}
+              style={{
+                color: darkmode ? "#FFFFFF" : "#000000",
+                filter: darkmode ? "none" : "brightness(0.9)",
+              }}>Settings</span>)}
           </div>
           {sidebarReduced && <div className={tooltipClass}>Settings</div>}
-        </div> */}
+        </div>
 
         {/* Dark Mode Toggle */}
-        <div className="relative group mb-4 w-full">
+        <div className="h-10 relative group  w-full">
           <div onClick={() =>{ 
             const isdarkmode=localStorage.getItem("darkmode")
             if(isdarkmode)
@@ -137,8 +151,10 @@ const handleclearconversations=async()=>{
             }
             
             }} className={menuItemClass(sidebarReduced)}>
-            {darkmode ? <FaSun /> : <FaMoon />}
-            {!sidebarReduced && <span>{darkmode ? "Light Theme" : "Dark Theme"}</span>}
+            {darkmode ? <FaSun  className={`text-lg flex gap-2 items-center justify-center cursor-pointer  ${
+              darkmode ? "text-white " : "text-gray"
+            }`}/> : <MdOutlineDarkMode className="text-black text-lg"/>}
+            {!sidebarReduced && <span className={`${darkmode ? "text-white" : "text-black"}`} >{darkmode ? "Light Theme" : "Dark Theme"}</span>}
           </div>
           {sidebarReduced && (
             <div className={tooltipClass}>{darkmode ? "Light Theme" : "Dark Theme"}</div>
@@ -147,15 +163,17 @@ const handleclearconversations=async()=>{
 
         {/* Clear Conversations */}
         <div 
-        className="relative group mb-4 w-full">
+        className="h-10 relative group mb-0 w-full">
           <div className={menuItemClass(sidebarReduced)}>
-            <FaTrashAlt
-            className=" hover:text-gray-950"
-                    onClick={handleclearconversations}
+          <RiDeleteBin6Line 
+            className={`text-lg flex gap-2 items-center justify-center cursor-pointer  ${
+              darkmode ? "text-white " : "text-black "
+            }`}
+              onClick={handleclearconversations}
             />
             {!sidebarReduced && <span
-            className=" hover:text-gray-950"
-              onClick={handleclearconversations}
+            className= {darkmode ? "text-white" : "text-black"}
+            onClick={handleclearconversations}
 
             >Clear Conversations</span>}
           </div>
@@ -166,27 +184,28 @@ const handleclearconversations=async()=>{
         </div>
 
         {/* Updates & FAQ */}
-        {/*
-        <div className="relative group mb-4 w-full">
-          <div className={menuItemClass(sidebarReduced)}>
-            <FaBell />
-            {!sidebarReduced && <span>Updates & FAQ</span>}
+        <div className="h-10 relative group mb-2 w-full">
+          <div className={menuItemClass(sidebarReduced)}> 
+          <RiShareBoxLine  className={`text-lg flex gap-2 items-center justify-center cursor-pointer  ${
+                darkmode ? "text-white " : "text-black"
+              }`} />
+            {!sidebarReduced && <span className={`${darkmode ? "text-white" : "text-black"}`} >Updates & FAQ</span>}
           </div>
           {sidebarReduced && <div className={tooltipClass}>Updates & FAQ</div>}
         </div>
-         */}
+      
         {/* Logout */}
-        <div className="flex justify-start w-full">
+        <div className="h-10 relative group text-xs w-full">
           {sidebarReduced ? (
             <div className="relative group">
-              <FaUserCircle
+              <MdLogout
               onClick={() => {
                 dispatch(logout());
                 localStorage.removeItem("messages")
                 navigate("/signup");
               }}
-                className={`text-2xl cursor-pointer ${
-                  darkmode ? "text-white hover:text-red-800" : "text-gray-500 hover:text-red-700"
+                className={`text-lg cursor-pointer ml-8 ${
+                  darkmode ? "text-white group-hover:text-red-800" : "text-black-600 group-hover:text-red-700"
                 }`}
               />
               <div className={tooltipClass}>Logout</div>
@@ -199,11 +218,11 @@ const handleclearconversations=async()=>{
 
                 navigate("/signup");
               }}
-              className={`text-lg flex gap-2 items-center justify-center cursor-pointer ${
-                darkmode ? "text-white hover:text-red-800" : "text-gray-500 hover:text-red-700"
+              className={`text-sm flex gap-2 items-center justify-center cursor-pointer ml-3.5 ${
+                darkmode ? "text-white hover:text-red-800" : "text-gray-600 hover:text-red-700"
               }`}            >
-              <FaUserCircle className="text-2xl" />
-              Log out
+               <MdLogout className={` text-lg ${darkmode ? "text-white group-hover:text-red-800" : "text-black group-hover:text-red-700"}`} />
+              <span className={`${darkmode ? "text-white group-hover:text-red-800" : "text-black group-hover:text-red-700"}`} > Log out </span>
             </button>
           )}
         </div>
