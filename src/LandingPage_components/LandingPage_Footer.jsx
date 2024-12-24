@@ -2,52 +2,48 @@ import { Link } from "react-router-dom";
 
 export default function LandingPage_Footer() {
   return (
-    <footer className=" bottom-0   bg-gray-50 text-gray-800 py-6 shadow-sm  border-gray-200 ">
-      <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-        <ul className="flex flex-wrap justify-center md:justify-start space-x-4 md:space-x-6 mb-4 md:mb-0 text-sm md:text-base">
+    <footer className="bg-gray-50 text-black-2000 shadow-sm  border-gray-200 ">
+      <div className="container mx-auto overflow-x-auto">
+        <ul className="flex flex-nowrap items-center justify-start w-full text-sm md:text-sm lg:text-base font-roboto pr-4 md:pr-8 space-x-6">
           
            <Link to={'/aboutus'}>
-           <li className="mb-2 md:mb-0 transition-all duration-300 
-              text-gray-700 hover:text-[#6F036C] 
-              hover:scale-105 cursor-pointer 
-              hover:underline decoration-[#6F036C]/50">
+              <li className="transition-all duration-300 text-black-600 
+              hover:text-[#6F036C] hover:scale-105 cursor-pointer 
+              hover:underline decoration-[#6F036C]/50">          
                 About Us</li>
            </Link> 
 
           
 
            <Link to={'/terms'}>
-           <li className="mb-2 md:mb-0 transition-all duration-300 
-              text-gray-700 hover:text-[#6F036C] 
-              hover:scale-105 cursor-pointer 
-              hover:underline decoration-[#6F036C]/50">
+                <li className="transition-all duration-300 text-black-600
+                hover:text-[#6F036C] hover:scale-105 cursor-pointer 
+                hover:underline decoration-[#6F036C]/50">
                  Terms and Conditions</li>
            </Link> 
 
            <Link to={'/privacy'}>
-           <li className="mb-2 md:mb-0 transition-all duration-300 
-              text-gray-700 hover:text-[#6F036C] 
-              hover:scale-105 cursor-pointer 
-              hover:underline decoration-[#6F036C]/50">
-                Privacy Policy</li>
+                <li className="transition-all duration-300 text-black-600 
+                hover:text-[#6F036C] hover:scale-105 cursor-pointer 
+                hover:underline decoration-[#6F036C]/50">
+                  Privacy Policy</li>
            </Link> 
 
            <Link to={'/cancellation'}>
-           <li className="mb-2 md:mb-0 transition-all duration-300 
-              text-gray-700 hover:text-[#6F036C] 
-              hover:scale-105 cursor-pointer 
-              hover:underline decoration-[#6F036C]/50">
-                Cancellation/Refund Policies</li>
+                <li className="transition-all duration-300 text-black-600 
+                hover:text-[#6F036C] hover:scale-105 cursor-pointer 
+                hover:underline decoration-[#6F036C]/50">
+                 Cancellation/Refund Policies</li>
            </Link> 
+
            <Link to={'/contactus'}>
-           <li className="mb-2 md:mb-0 transition-all duration-300 
-              text-gray-700 hover:text-[#6F036C] 
-              hover:scale-105 cursor-pointer 
-              hover:underline decoration-[#6F036C]/50">
-                Contact Us</li>
+                <li className="transition-all duration-300 text-black-600 
+                hover:text-[#6F036C] hover:scale-105 cursor-pointer 
+                hover:underline decoration-[#6F036C]/50">
+                  Contact Us</li>
            </Link> 
         </ul>
-        <div className="flex space-x-6 items-center">
+        {/*  <div className="flex space-x-6 items-center">
           {[
             { 
               name: 'Facebook', 
@@ -82,7 +78,7 @@ export default function LandingPage_Footer() {
               </svg>
             </a>
           ))}
-        </div>
+        </div> */}
       </div>
       
      
