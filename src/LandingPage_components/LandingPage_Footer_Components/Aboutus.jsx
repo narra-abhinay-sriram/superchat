@@ -1,7 +1,10 @@
 import LandingPage_Header from '../LandingPage_Header';
 import LandingPage_Footer from '../LandingPage_Footer';
+import useDispatchHeader from '../../customHooks/useDispatchHeader'
 
 export default function Aboutus() {
+  useDispatchHeader()
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}

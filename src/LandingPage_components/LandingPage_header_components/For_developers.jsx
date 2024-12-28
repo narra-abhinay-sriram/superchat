@@ -36,7 +36,7 @@ import insurance_logo from '../../assets/predicting_analysis_forecasting/insuran
 import LandingPage_Footer from "../LandingPage_Footer";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { changeForDevPage } from "../../ReduxStateManagement/user";
+import { changeforbusiness, changeForDevPage } from "../../ReduxStateManagement/user";
 const sections = [
     {
       title: "Complete Data Sovereignty for Sensitive Data",
@@ -87,6 +87,7 @@ const sections = [
   
     useEffect(() => {
       dispatch(changeForDevPage(true));
+      dispatch(changeforbusiness(false))
     }, []);
   
     return (

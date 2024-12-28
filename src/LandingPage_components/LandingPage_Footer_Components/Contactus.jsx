@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import LandingPage_Header from '../LandingPage_Header';
 import Contact_form_submit from './Contact_form_submit';
+import useDispatchHeader from '../../customHooks/useDispatchHeader'
+
 
 export default function Contactus() {
+  useDispatchHeader();
   const [formData, setFormData] = useState({
     name: '',
     age: '',

@@ -5,6 +5,10 @@ import { Login_Api, Signup_api } from "../Utils/Apis";
 import { useDispatch } from "react-redux";
 import { login } from "../ReduxStateManagement/authslice";
 import { GoogleLogin } from "@react-oauth/google";
+import LandingPage_Header from "../LandingPage_components/LandingPage_Header";
+import useDispatchHeader from '../customHooks/useDispatchHeader'
+import superchatLogo from '../assets/superchat_logo.png';
+
 
 export default function SignupPage() {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -14,6 +18,7 @@ export default function SignupPage() {
   const [loading, setloading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  useDispatchHeader();
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -58,17 +63,26 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="w-full max-w-sm sm:max-w-md mx-auto mt-16 p-6 border rounded-lg shadow-md">
-      <form onSubmit={handleloginsubmit}>
-        <h1 className="text-2xl font-semibold mb-6 text-center">
-          {loginhandle ? "Login" : "Sign Up"}
-        </h1>
+    <div className="bg-gray-50">
+                 <div className="fixed top-0 w-full h-12 bg-white shadow z-10">
+                              <LandingPage_Header />
+                  </div>
+    <div className="w-full  max-w-sm sm:max-w-md mx-auto p-6  rounded-lg  flex items-center justify-center min-h-screen">
+      <form onSubmit={handleloginsubmit} className="w-full  border my-16 pb-24 pt-8 px-8 rounded-md bg-white">
+      <div className="flex justify-center mb-1">
+         <img src={superchatLogo} className="w-14 h-14" />
+          </div>
+          <p className="text-center text-2xl font-semibold mb-14 text-slate-900">
+            Superchat
+            </p>
+
+        
 
         <label className="block text-sm font-medium mb-2">Email</label>
         <input
           type="text"
           placeholder="chris@gmail.com"
-          className="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-[100%] px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           id="email"
           onChange={(e) =>
             setformdata({ ...formdata, [e.target.id]: e.target.value })
@@ -114,8 +128,9 @@ export default function SignupPage() {
           {loginhandle ? "Login" : "Sign Up"}
         </button>
 
-        <p className="text-center text-gray-600 my-4">Or continue with</p>
-       {/* <div className="flex justify-center gap-4">
+       {/*         <p className="text-center text-gray-600 my-4">Or continue with</p>
+
+       <div className="flex justify-center gap-4">
           <button
             disabled={loading}
             className="flex items-center border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50"
@@ -164,6 +179,7 @@ export default function SignupPage() {
           )}
         </p>
       </form>
+    </div>
     </div>
   );
 }

@@ -1,9 +1,11 @@
-import React from 'react'
 import LandingPage_Header from '../LandingPage_Header';
 import LandingPage_Footer from '../LandingPage_Footer';
 import { Link } from 'react-router-dom';
+import useDispatchHeader from '../../customHooks/useDispatchHeader'
+
 export default function Cancellation_refund_policies() {
   const subHeadingStyle = "text-slate-900";
+  useDispatchHeader();
 
   return (
     <>

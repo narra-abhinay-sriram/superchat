@@ -2,9 +2,12 @@ import React from 'react';
 import LandingPage_Header from '../LandingPage_Header';
 import LandingPage_Footer from '../LandingPage_Footer';
 import { Link } from 'react-router-dom';
+import useDispatchHeader from '../../customHooks/useDispatchHeader'
+
 
 const Privacy_policy = () => {
   const subHeadingStyle = "text-slate-900";
+  useDispatchHeader();
   
   return (
     <>

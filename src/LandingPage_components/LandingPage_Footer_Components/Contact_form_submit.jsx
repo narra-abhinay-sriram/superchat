@@ -1,8 +1,10 @@
 import { FaCheck } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import useDispatchHeader from "../../customHooks/useDispatchHeader";
 
 export default function Contact_form_submit() {
     const navigate=useNavigate()
+   useDispatchHeader();
   return (
     <div>
       <div className="flex flex-col justify-center items-center mx-auto h-screen ">

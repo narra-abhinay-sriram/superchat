@@ -1,15 +1,11 @@
-import { useEffect } from "react";
 import LandingPage__Left_Container from "./LandingPage__Left_Container";
-import { useDispatch } from "react-redux";
-import { changeForDevPage } from "../ReduxStateManagement/user";
+import useDispatchHeader from '../customHooks/useDispatchHeader'
 //import LandingPage_Right_Container from "./LandingPage_Right_Container";
 
 
 export default function LandingPage_MainContainer() {
-  const dispatch=useDispatch()
-  useEffect(()=>{
-    dispatch(changeForDevPage(false))
-  },[])
+  useDispatchHeader()
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 bg-slate-50 min-h-[300px] gap-4">
       {/* Left Container */}

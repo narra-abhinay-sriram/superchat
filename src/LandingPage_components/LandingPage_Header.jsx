@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 export default function LandingPage_Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { fordevelopersPage} = useSelector(store=>store.user)
+  const { fordevelopersPage,forbusiness} = useSelector(store=>store.user)
 
   return (
     <div className="flex justify-between items-center h-[60px] bg-slate-50 px-4">
@@ -31,7 +31,9 @@ export default function LandingPage_Header() {
       <Link to={'/fordevelopers'}>
         <span className={`hover:underline cursor-pointer ${fordevelopersPage && 'underline'}`}>For Developers</span>
         </Link>
-        <span className="hover:underline cursor-pointer">For Businesses</span>
+        <Link to={'/forbusiness'}>
+        <span className={`hover:underline cursor-pointer ${forbusiness && 'underline'}`}>For Businesses</span>
+        </Link>
        
         <span className="hover:underline cursor-pointer">Super Chip</span>
       </div>
@@ -51,18 +53,20 @@ export default function LandingPage_Header() {
         <div className="absolute top-[60px] right-0 w-full bg-white shadow-lg flex flex-col items-center space-y-4 p-4 md:hidden">
          <Link to={'/fordevelopers'}>
           <span
-            className="hover:underline cursor-pointer text-custom-purple text-[18px]"
+            className={`hover:underline cursor-pointer text-custom-purple text-[18px] ${fordevelopersPage && 'underline'}`}
             onClick={() => setIsMenuOpen(false)}
           >
             For Developers
           </span>
           </Link>
+          <Link to={'/forbusiness'}>
           <span
-            className="hover:underline cursor-pointer text-custom-purple text-[18px]"
+            className={`hover:underline cursor-pointer text-custom-purple text-[18px] ${forbusiness && 'underline'}`}
             onClick={() => setIsMenuOpen(false)}
           >
             For Businesses
           </span>
+          </Link>
           
          
           <span

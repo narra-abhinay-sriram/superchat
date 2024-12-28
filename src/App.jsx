@@ -9,6 +9,7 @@ import Terms_Conditions from "./LandingPage_components/LandingPage_Footer_Compon
 import Cancellation_refund_policies from "./LandingPage_components/LandingPage_Footer_Components/Cancellation_refund_policies";
 import Privacy_policy from "./LandingPage_components/LandingPage_Footer_Components/Privacy_policy";
 import For_developers from "./LandingPage_components/LandingPage_header_components/For_developers";
+import ForBusiness from "./LandingPage_components/LandingPage_header_components/ForBusiness";
 function App() {
   return (
     <BrowserRouter basename="/"  > {/* Ensure the basename matches your subdirectory */}
@@ -23,6 +24,7 @@ function App() {
          <Route path="/cancellation" element={<Cancellation_refund_policies/>} />
          <Route path="/privacy" element={<Privacy_policy/>}/>
          <Route path="/fordevelopers" element={<For_developers/>} />
+         <Route path="/forbusiness" element={<ForBusiness/>} />
 
 
       </Routes>
