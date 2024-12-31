@@ -295,7 +295,8 @@ if (data.message)
 
 
   const renderInputArea = () => (
-    <div className="fixed bottom-5 w-full max-w-4xl mr-28">
+    // <div className="fixed bottom-1.5 w-full max-w-4xl mr-28">
+    <div className="fixed bottom-1.5 w-full max-w-4xl md:max-w-3xl sm:max-w-2xl xs:max-w-full md:mr-20 sm:mr-10 xs:mr-0">
       <div className="flex items-center gap-0">
         {/* Responsive dropdown for small devices */}
         <div className="sm:hidden relative">
@@ -308,9 +309,9 @@ if (data.message)
             onClick={() => setShowTypeMenu(!showTypeMenu)}
           >
             {activeToggle === "csv" ? (
-              <GrDocumentCsv className="w-5 h-5 bg-gray-600" />
+              <GrDocumentCsv className="w-5 h-5 " />
             ) : activeToggle === "pdf" ? (
-              <GrDocumentPdf className="w-5 h-5 bg-gray-600" />
+              <GrDocumentPdf className="w-5 h-5 " />
             ) : (
               <BsChatText className="w-5 h-5 " />
             )}
