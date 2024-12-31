@@ -38,7 +38,7 @@ export default function ForBusiness() {
           <LandingPage_Header />
         </div>
         
-        <div className="flex flex-col md:flex-row mt-16 md:mt-36 p-4 min-h-[50vh] md:px-8 lg:px-16">
+        <div className="flex flex-col md:flex-row mt-16 md:mt-36 p-4 min-h-[50vh] md:px-8 lg:px-44">
           <div className="w-full md:w-3/5 flex flex-col p-4">
             <span className="text-slate-500 text-2xl md:text-4xl max-w-full md:w-[650px] font-semibold">
               Bring your best ideas to life with Superchat for seamless collaboration and productivity
@@ -72,17 +72,17 @@ export default function ForBusiness() {
           <div className="w-full md:w-2/5 mt-8 md:mt-0 flex justify-center md:justify-end">
             <img
               src={Supechat_screen}
-              className="rounded-lg w-[290px] border-2 border-gray-300 h-auto shadow-xl"
+              className="rounded-lg w-[220px] border-2 border-gray-300 h-auto lg:h-[520px] shadow-xl"
               alt="Superchat Screenshot"
             />
           </div>
         </div>
 
         <div className="flex flex-col justify-center items-center mx-auto py-6 md:py-12 px-4 text-center mt-4 md:mt-12">
-          <span className="text-slate-700 text-xl md:text-3xl font-medium p-2 w-full md:w-[460px] leading-relaxed">
+          <span className="text-slate-700 text-2xl md:text-3xl font-medium p-2 w-full md:w-[460px] leading-relaxed">
             Superchat is your always-on AI
           </span>
-          <span className="text-slate-700 text-xl md:text-3xl font-medium p-2 w-full md:w-[750px] leading-relaxed">
+          <span className="text-slate-700 text-2xl md:text-3xl font-medium p- w-full md:w-[750px] leading-relaxed">
             assistant for seamless collaboration and productivity
           </span>
         </div>
