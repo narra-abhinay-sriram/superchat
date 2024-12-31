@@ -11,7 +11,6 @@ import {
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
 import superchatLogo from "../assets/superchat_logo.png";
 import Chatbot_Message from "./Chatbot_message";
 import { ask_csv, ask_pdf, Chat_api, pdf_upload_api } from "../Utils/Apis";
@@ -136,6 +135,7 @@ if (data.message)
         idx === prev.length - 1
           ? {  isLoading: false }
           : msg
+
       )
     );
       setMessages((prev) => [
