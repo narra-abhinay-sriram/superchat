@@ -7,7 +7,6 @@ import { GrDocumentPdf } from "react-icons/gr";
 import {
   FaMicrophone,
   FaRedoAlt,
-  //FaImage,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
