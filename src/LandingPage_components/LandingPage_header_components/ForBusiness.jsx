@@ -72,7 +72,7 @@ export default function ForBusiness() {
           <div className="w-full md:w-2/5 mt-8 md:mt-0 flex justify-center md:justify-end">
             <img
               src={Supechat_screen}
-              className="rounded-lg w-[220px] border-2 border-gray-300 h-auto lg:h-[520px] shadow-xl"
+              className="rounded-lg w-[300px] border-2 border-gray-300 h-auto lg:h-[520px] shadow-xl"
               alt="Superchat Screenshot"
             />
           </div>
