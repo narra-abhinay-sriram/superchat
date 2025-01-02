@@ -1,13 +1,12 @@
 import { useEffect, useState, useRef } from "react";
+import { IoSend } from "react-icons/io5";
+import { PiPaperclipBold } from "react-icons/pi";
+import { BsChatText } from "react-icons/bs";
+import { GrDocumentCsv } from "react-icons/gr";
+import { GrDocumentPdf } from "react-icons/gr";
 import {
-  FaComments,
-  FaFileAlt,
-  FaFileCsv,
   FaMicrophone,
-  FaPaperclip,
-  FaPaperPlane,
   FaRedoAlt,
-  //FaImage,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,6 +17,7 @@ import { Capabilities, questionSets } from "../Utils/constants";
 import { logout } from "../ReduxStateManagement/authslice";
 import superchatLogo_white from "../assets/superchat_logo_white.png"
 import RenderLogo from "./BotInterface_components/RenderLogo";
+import VoiceInterface from "./BotInterface_components/VoiceInterface";
 import { changeVoiceMode } from "../ReduxStateManagement/user";
 ///import useSubscribed from "../customHooks/useSubscribed";
 
@@ -44,7 +44,6 @@ const BotInterface = () => {
     return questionSets[randomIndex];
   });
 
-  
   
   
   // Authentication Check
@@ -135,7 +134,6 @@ if (data.message)
         idx === prev.length - 1
           ? {  isLoading: false }
           : msg
-
       )
     );
       setMessages((prev) => [
@@ -269,8 +267,8 @@ if (data.message)
       }`}
     >
       {[
-        { type: "pdf", icon: FaFileAlt, label: "PDF" },
-        { type: "csv", icon: FaFileCsv, label: "CSV" },
+        { type: "pdf", icon: GrDocumentPdf, label: "PDF" },
+        { type: "csv", icon: GrDocumentCsv, label: "CSV" },
       ].map(({ type, icon: Icon, label }) => (
         <button
           key={type}
@@ -295,12 +293,13 @@ if (data.message)
 
 
   const renderInputArea = () => (
-    <div className="fixed bottom-4 w-full max-w-3xl mx-auto px-4 py-2">
-      <div className="flex items-center gap-4">
+    // <div className="fixed bottom-1.5 w-full max-w-4xl mr-28">
+    <div className="fixed bottom-1.5 w-full max-w-4xl md:max-w-3xl sm:max-w-2xl xs:max-w-full md:mr-20 sm:mr-10 xs:mr-0">
+      <div className="flex items-center gap-0">
         {/* Responsive dropdown for small devices */}
         <div className="sm:hidden relative">
           <button 
-            className={`p-2 rounded-md ${
+            className={`p-2  ${
               darkmode 
                 ? "bg-[#3A3A3A] text-white hover:bg-[#4A4A4A]" 
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -308,26 +307,26 @@ if (data.message)
             onClick={() => setShowTypeMenu(!showTypeMenu)}
           >
             {activeToggle === "csv" ? (
-              <FaFileCsv className="w-5 h-5" />
+              <GrDocumentCsv className="w-5 h-5 " />
             ) : activeToggle === "pdf" ? (
-              <FaFileAlt className="w-5 h-5" />
+              <GrDocumentPdf className="w-5 h-5 " />
             ) : (
-              <FaComments className="w-5 h-5" />
+              <BsChatText className="w-5 h-5 " />
             )}
           </button>
           
           {showTypeMenu && (
             <div 
-              className={`absolute bottom-full left-0 mb-2 rounded-lg shadow-lg p-2 ${
+              className={`absolute bottom-full mb-2 rounded-lg shadow-lg p-2 ${
                 darkmode 
                   ? "bg-[#3A3A3A] text-white" 
                   : "bg-white text-gray-800"
               }`}
             >
               {[
-                { type: "csv", icon: FaFileCsv, label: "CSV File" },
-                { type: "pdf", icon: FaFileAlt, label: "PDF" },
-                { type: "chat", icon: FaComments, label: "Chat" }
+                { type: "csv", icon: GrDocumentCsv, label: "CSV File" },
+                { type: "pdf", icon: GrDocumentPdf, label: "PDF" },
+                { type: "chat", icon: BsChatText, label: "Chat" }
               ].map(({ type, icon: Icon, label }) => (
                 <button
                   key={type}
@@ -345,7 +344,7 @@ if (data.message)
                         : "hover:bg-gray-100 text-gray-700")
                   }`}
                 >
-                  <Icon className="w-5 h-5 mr-2" />
+                  <Icon className="w-5 h-5 mr-2 " />
                   <span>{label}</span>
                 </button>
               ))}
@@ -354,76 +353,99 @@ if (data.message)
         </div>
   
         {/* Existing toggle for sm and above */}
-        <div className="hidden sm:flex rounded-lg p-1 gap- bg-gray-200 dark:bg-[#3A3A3A]">
+        <div className="hidden sm:flex rounded-lg bg-white shadow-sm p-1 mx-5 gap-1 bg-white border-2 dark:bg-[#3A3A3A] m-4">
           {[
-            { type: "csv", icon: FaFileCsv },
-            { type: "pdf", icon: FaFileAlt },
-            { type: "chat", icon: FaComments },
+            { type: "csv", icon: GrDocumentCsv},
+            { type: "pdf", icon: GrDocumentPdf },
+            { type: "chat", icon: BsChatText },
           ].map(({ type, icon: Icon }) => (
             <button 
               key={type} 
               onClick={() => setActiveToggle(type)}
               className={`p-2 rounded-md ${
                 activeToggle === type
-                  ? "bg-gray-300 text-black shadow-sm dark:bg-[#4A4A4A] dark:text-white"
-                  : "hover:bg-gray-100 text-gray-700 dark:hover:bg-[#3A3A3A] dark:text-gray-400"
+                  ? "bg-white text-black shadow-sm dark:bg-[#4A4A4A] dark:text-white"
+                  : "hover:bg-gray-300 text-gray-700 dark:hover:bg-[#3A3A3A] dark:text-gray-400"
               }`}
             >
-              <Icon className="w-5 h-5" />
+              <Icon className="w-5 h-5 " />
             </button>
           ))}
         </div>
   
         {/* File attachment button */}
-        <div className="relative">
-          <button 
-            className={`p ${
-              darkmode 
-                ? "text-white hover:bg-[#3A3A3A] rounded-md" 
-                : "text-gray-600 hover:bg-gray-100 rounded-md"
-            } focus:outline-none`} 
-            onClick={() => setShowFileMenu(!showFileMenu)}
-          >
-            <FaPaperclip className="w-5 h-5" />
-          </button>
-          {showFileMenu && renderFileMenu()}
-        </div>
+        <div className="flex items-center relative w-full">
+  <button 
+    className={`absolute left-2 p-2 ${
+      darkmode 
+        ? "text-black hover:bg-[#3A3A3A] rounded-full" 
+        : "text-gray-600 hover:bg-gray-100 rounded-full"
+    } focus:outline-none`} 
+    onClick={() => setShowFileMenu(!showFileMenu)}
+  >
+    <PiPaperclipBold className="w-5 h-5 ml-2 text-gray " />
+  </button>
+  {showFileMenu && renderFileMenu()}
   
-        {/* Input area */}
-        <div className={` flex flex-grow rounded-full relative ${
-          darkmode 
-            ? "bg-[#3A3A3A]" 
-            : "bg-gray-100"
-        }`}>
-          <input 
-            type="text"
-            value={message}
-            placeholder={
-              activeToggle === "chat" 
-                ? "Type your message here.."
-                : activeToggle === "pdf" 
-                ? "Type questions regarding uploaded pdf..."
-                : "Type questions regarding uploaded CSV file..."
-            }
-            onChange={(e) => setMessage(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleChat(message)}
-            className="w-full rounded-full py-2 px-4 focus:outline-none border border-gray-600 dark:border-gray-700"
-          />
-         
-          
-        </div>
-       {/* Send button */}
-        <button 
-          className={`p-3 rounded-full ${
-            darkmode
-              ? "bg-[#4A4A4A] hover:bg-[#5A5A5A] text-white"
-              : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-          }`}
-          onClick={() => handleChat(message)}
-        >
-          <FaPaperPlane />
-        </button>
-        <div>
+
+  {/* Input area */}
+  <input 
+    type="text"
+    value={message}
+    placeholder={
+      activeToggle === "chat" 
+        ? "Type your message here..." 
+        : activeToggle === "pdf" 
+        ? "Type questions regarding uploaded pdf..." 
+        : "Type questions regarding uploaded CSV file..."
+    }
+    onChange={(e) => setMessage(e.target.value)}
+    onKeyDown={(e) => e.key === "Enter" && handleChat(message)}
+    className={`w-[800px] py-2 pl-10 pr-12 focus:outline-none rounded-lg shadow-md ${
+      darkmode 
+        ? "bg-white text-black" 
+        : "bg-gray-100 text-black"
+    }`}
+    style={{
+      margin: '20px', // Adjust margins as needed
+    }}
+  />
+
+{/* Microphone button */}
+<button 
+    className={`absolute right-12 p-3 rounded-full ${
+      darkmode
+        ? " text-black"
+        : "bg-gray-100 text-gray-700"
+    }`} 
+    onClick={(event) => handlevoice(event)}
+    aria-label="Toggle Voice Interface"
+  >
+    <FaMicrophone />
+  </button> 
+  
+  {/* {isVoiceInterfaceVisible && (
+                <div className="fixed inset-0 z-50 bg-black bg-opacity-75 flex items-center justify-center">
+                    <VoiceInterface />
+                </div>
+            )} */}
+
+  {/* Send button */}
+  <button 
+    className={`absolute right-6 p-2 rounded-full ${
+      darkmode
+        ? " text-black"
+        : "bg-gray-100 hover:bg-gray-300 text-gray-700"
+    }`} 
+    onClick={() => handleChat(message)}
+  >
+    <IoSend />
+  </button>
+</div>
+          {/* no need  */}
+          {/* <FaPaperPlane /> */}
+        {/* </button> */}
+        {/* <div>
              <button className={`p-3 rounded-full ${
               darkmode 
                 ? "text-white bg-[#4A4A4A] hover:bg-[#3A3A3A] " 
@@ -432,23 +454,25 @@ if (data.message)
             onClick={() => handlevoice()}
              >
                <FaMicrophone className="w-5 h-5"/>
-              </button>
-          </div>
+          </button>
+          </div> */}
+          {/* {/* No need */}
       </div>
-    </div>
+   </div>
   );
   // Main Render
   
   return (
     <div
-  className={`pt-14  ${
+  className={`pt-14 h-[800px] ${
     sidebarReduced ? "sm:ml-20" : "sm:ml-[230px]"
   } ${darkmode ? "bg-[#2C2C2C]" : "bg-white"} w-full sm:w-auto flex-1 flex flex-col items-center h-screen relative mx-auto`}
 >
 
       {!chatStarted ? (
         isLoading ? (
-          <div className="flex justify-center items-center h-full">
+          <div className="flex justify-center items-center h-full mt-4 mb-8"
+          style={{ width: '100px', height: '100px' }} >
             <img
       src={darkmode ? superchatLogo_white : superchatLogo}
       alt="Superchat Logo"
@@ -458,9 +482,11 @@ if (data.message)
         ) : (
           <>
             {<RenderLogo/>}
-            <div className="grid grid-cols-2 gap-8 mt-72 w-full px-20 flex-grow">
+            <div className="grid grid-cols-2 gap-4 mb-20 w-auto px-20 flex-grow"
+              style={{ marginTop: "180px" }} >
               <div className="hidden sm:block">
-                <h3 className={`font-semibold ${darkmode ? "text-gray-300" : "text-gray-800"} text-center`}>
+              <h3 className={`font-semibold mt-2 ${
+                  darkmode ? "text-gray-300" : "text-gray-800"} text-center`}>
                   Examples
                 </h3>
                 {selectedSet.examples.map((example, idx) => (
@@ -470,11 +496,17 @@ if (data.message)
                       handleChat(message)
                       setMessage(example)
                     }}
-                    className={`block text-center ${
+                    className={`block ${
                       darkmode
                         ? "bg-[#3A3A3A] text-gray-300 hover:bg-[#4A4A4A]"
-                        : "bg-gray-100 text-black hover:bg-gray-200"
-                    } p-4 rounded-lg shadow-md mt-4 w-full`}
+                        : "bg-black text-white hover:bg-[#1A1A1A]"
+                      } w-full p-1  rounded-lg shadow-md mt-3 flex justify-center items-center`}
+                      style={{
+                        height: "50px", // Fixed height
+                        width: "250px", // Adjust to parent width
+                        wordWrap: "break-word", // Wrap long text
+                        textAlign: "center", // Center text
+                      }}
                   >
                     {example} →
                   </button>
@@ -482,7 +514,8 @@ if (data.message)
               </div>
 
               <div className="hidden sm:block">
-                <h3 className={`font-semibold ${darkmode ? "text-gray-300" : "text-gray-800"} text-center `}>
+                <h3 className={`font-semibold mt-2 
+                  ${darkmode ? "text-gray-300" : "text-gray-800"} text-center `}>
                   Capabilities
                 </h3>
                 {Capabilities.map((capability, idx) => (
@@ -491,8 +524,14 @@ if (data.message)
                     className={`block ${
                       darkmode
                         ? "bg-[#3A3A3A] text-gray-300 hover:bg-[#4A4A4A]"
-                        : "bg-gray-100 text-black hover:bg-gray-200"
-                    } p-4 rounded-lg shadow-md mt-4 w-full `}
+                        : "bg-black text-white hover:bg-[#1A1A1A]"
+                    } w-full p-1 rounded-lg shadow-md mt-3 flex justify-center items-center`}
+                    style={{
+                      height: "50px", // Fixed height
+                      width: "250px", // Adjust to parent width
+                      wordWrap: "break-word", // Wrap long text
+                      textAlign: "center", // Center text
+                    }}
                   >
                     {capability}
                   </button>
