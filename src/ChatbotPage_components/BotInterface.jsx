@@ -353,7 +353,7 @@ if (data.message)
         </div>
   
         {/* Existing toggle for sm and above */}
-        <div className="hidden sm:flex rounded-lg shadow-sm p-1 mx-5 gap-1 bg-white border-2 dark:bg-[#3A3A3A] m-4">
+        <div className="hidden sm:flex rounded-lg bg-white shadow-sm p-1 mx-5 gap-1 bg-white border-2 dark:bg-[#3A3A3A] m-4">
           {[
             { type: "csv", icon: GrDocumentCsv},
             { type: "pdf", icon: GrDocumentPdf },
@@ -486,7 +486,7 @@ if (data.message)
               style={{ marginTop: "180px" }} >
               <div className="hidden sm:block">
               <h3 className={`font-semibold mt-2 ${
-                  darkmode ? "text-gray-300" : "text-gray-800"} text-center text-xl`}>
+                  darkmode ? "text-gray-300" : "text-gray-800"} text-center`}>
                   Examples
                 </h3>
                 {selectedSet.examples.map((example, idx) => (
@@ -500,7 +500,7 @@ if (data.message)
                       darkmode
                         ? "bg-[#3A3A3A] text-gray-300 hover:bg-[#4A4A4A]"
                         : "bg-black text-white hover:bg-[#1A1A1A]"
-                      } w-full py-8 pl-4 pr-7   rounded-lg shadow-md mt-3 flex justify-center items-center`}
+                      } w-full p-1  rounded-lg shadow-md mt-3 flex justify-center items-center`}
                       style={{
                         height: "50px", // Fixed height
                         width: "250px", // Adjust to parent width
@@ -515,7 +515,7 @@ if (data.message)
 
               <div className="hidden sm:block">
                 <h3 className={`font-semibold mt-2 
-                  ${darkmode ? "text-gray-300" : "text-gray-800"} text-center text-xl `}>
+                  ${darkmode ? "text-gray-300" : "text-gray-800"} text-center `}>
                   Capabilities
                 </h3>
                 {Capabilities.map((capability, idx) => (
@@ -525,7 +525,7 @@ if (data.message)
                       darkmode
                         ? "bg-[#3A3A3A] text-gray-300 hover:bg-[#4A4A4A]"
                         : "bg-black text-white hover:bg-[#1A1A1A]"
-                    } w-full  py-8 pl-4 pr-7  rounded-lg shadow-md mt-3 flex justify-center items-center`}
+                    } w-full p-1 rounded-lg shadow-md mt-3 flex justify-center items-center`}
                     style={{
                       height: "50px", // Fixed height
                       width: "250px", // Adjust to parent width
