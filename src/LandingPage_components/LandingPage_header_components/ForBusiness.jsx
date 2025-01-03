@@ -19,7 +19,7 @@ import defence_contractors from '../../assets/forbus/defence.jpeg'
 import critical_utilities from '../../assets/forbus/critical.jpeg'
 import LandingPage_Footer from "../LandingPage_Footer";
 import { useEffect } from "react";
-import { changeforbusiness, changeForDevPage } from "../../ReduxStateManagement/user";
+import { changeforbusiness, changeForDevPage, changeSuperchip } from "../../ReduxStateManagement/user";
 import { useDispatch } from "react-redux";
 
 export default function ForBusiness() {
@@ -28,7 +28,8 @@ export default function ForBusiness() {
 
   useEffect(() => {
     dispatch(changeforbusiness(true));
-    dispatch(changeForDevPage(false))
+    dispatch(changeForDevPage(false));
+    dispatch(changeSuperchip(false));
   }, []);
 
   return (
@@ -40,10 +41,10 @@ export default function ForBusiness() {
         
         <div className="flex flex-col md:flex-row mt-16 md:mt-36 p-4 min-h-[50vh] md:px-8 lg:px-44">
           <div className="w-full md:w-3/5 flex flex-col p-4">
-            <span className="text-slate-500 text-2xl md:text-4xl max-w-full md:w-[650px] font-semibold">
+            <span className="bg-gradient-to-r from-[#6F036C] to-[#FF6F61E5] bg-clip-text text-transparent text-2xl md:text-4xl max-w-full md:w-[650px] font-semibold">
               Bring your best ideas to life with Superchat for seamless collaboration and productivity
             </span>
-            <span className="text-gray-500 py-2 text-lg md:text-xl max-w-full md:w-[550px] font-thin">
+            <span className="text-gray-800 py-2 text-lg md:text-xl max-w-full md:w-[550px] font-thin">
               Superchat is your AI-powered assistant, seamlessly integrated into messaging, documents, workflows, and more, with top-tier security and privacy
             </span>
             <div className="relative flex items-center gap-2 mt-6 md:mt-8">
@@ -78,11 +79,11 @@ export default function ForBusiness() {
           </div>
         </div>
 
-        <div className="flex flex-col justify-center items-center mx-auto py-6 md:py-12 px-4 text-center mt-4 md:mt-12">
-          <span className="text-slate-700 text-2xl md:text-3xl font-medium p-2 w-full md:w-[460px] leading-relaxed">
+        <div className="flex flex-col mb-5 justify-center items-center mx-auto py-6 md:py-12 px-4 text-center mt-4 md:mt-12">
+          <span className="text-black text-2xl md:text-3xl font-medium p-2 w-full md:w-[460px] leading-relaxed">
             Superchat is your always-on AI
           </span>
-          <span className="text-slate-700 text-2xl md:text-3xl font-medium p- w-full md:w-[750px] leading-relaxed">
+          <span className="text-black text-2xl md:text-3xl font-medium p- w-full md:w-[750px] leading-relaxed">
             assistant for seamless collaboration and productivity
           </span>
         </div>

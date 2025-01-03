@@ -107,12 +107,12 @@ export default function ChatbotHeaderSmallScreen() {
             {/* Menu Items */}
             <div className="flex flex-col items-start px-4 mt-4">
               {/* Settings */}
-              <div className="relative group mb-4 w-full">
+            { /* <div className="relative group mb-4 w-full">
                 <div className={menuItemClass()}>
                   <FaCog />
                   <span>Settings</span>
                 </div>
-              </div>
+              </div> */}
 
               {/* Dark Mode Toggle */}
               <div className="relative group mb-4 w-full">
@@ -146,12 +146,12 @@ export default function ChatbotHeaderSmallScreen() {
               </div>
 
               {/* Updates & FAQ */}
-              <div className="relative group mb-4 w-full">
+             {/* <div className="relative group mb-4 w-full">
                 <div className={menuItemClass()}>
                   <FaBell />
                   <span>Updates & FAQ</span>
                 </div>
-              </div>
+              </div>*/}
 
               {/* Logout */}
               <div className="flex justify-start w-full">

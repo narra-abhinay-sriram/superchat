@@ -10,6 +10,7 @@ import Cancellation_refund_policies from "./LandingPage_components/LandingPage_F
 import Privacy_policy from "./LandingPage_components/LandingPage_Footer_Components/Privacy_policy";
 import For_developers from "./LandingPage_components/LandingPage_header_components/For_developers";
 import ForBusiness from "./LandingPage_components/LandingPage_header_components/ForBusiness";
+import Super_chip from "./LandingPage_components/LandingPage_header_components/Super_chip";
 function App() {
   return (
     <BrowserRouter basename="/"  > {/* Ensure the basename matches your subdirectory */}
@@ -25,6 +26,7 @@ function App() {
          <Route path="/privacy" element={<Privacy_policy/>}/>
          <Route path="/fordevelopers" element={<For_developers/>} />
          <Route path="/forbusiness" element={<ForBusiness/>} />
+         <Route path="/superchip" element={<Super_chip />} />
 
 
       </Routes>

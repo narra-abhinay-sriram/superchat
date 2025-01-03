@@ -33,10 +33,15 @@ import prediction_logo from '../../assets/predicting_analysis_forecasting/predic
 import Bank_firms from '../../assets/predicting_analysis_forecasting/bank_firms.jpeg';
 import food_logo from '../../assets/predicting_analysis_forecasting/food.jpeg';
 import insurance_logo from '../../assets/predicting_analysis_forecasting/insurance.jpeg';
+import health_bg from '../../assets/health.svg';
+import finance_bg from '../../assets/finance.svg';
+import reatil_bg from '../../assets/retail.svg';
+import education_bg from '../../assets/education.svg';
+import travel_bg from '../../assets/travel.svg';
 import LandingPage_Footer from "../LandingPage_Footer";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { changeforbusiness, changeForDevPage } from "../../ReduxStateManagement/user";
+import { changeforbusiness, changeForDevPage, changeSuperchip } from "../../ReduxStateManagement/user";
 const sections = [
     {
       title: "Complete Data Sovereignty for Sensitive Data",
@@ -88,21 +93,22 @@ const sections = [
     useEffect(() => {
       dispatch(changeForDevPage(true));
       dispatch(changeforbusiness(false))
+      dispatch(changeSuperchip(false))
     }, []);
   
     return (
-      <div className="bg-gray-200">
+      <div className="bg-white">
         <div className="flex flex-col">
-          <div className="fixed top-0 w-full h-12 bg-white shadow z-10">
+          <div className="fixed top-0 w-full h-12 bg-white shadow z-20">
             <LandingPage_Header />
           </div>
           
           <div className="flex flex-col md:flex-row mt-36 p-2 min-h-[50vh] md:min-h-screen">
             <div className="w-full md:w-2/5 flex flex-col p-4 md:p-10">
-              <span className="text-slate-500 text-4xl md:text-6xl max-w-full md:w-[550px] font-semibold">
+              <span className="bg-gradient-to-r from-[#6F036C] to-[#FF6F61E5] bg-clip-text text-transparent text-4xl md:text-6xl max-w-full md:w-[550px] font-semibold">
                 Empowering every developer with AI
               </span>
-              <span className="text-gray-500 p-2 md:p-4 text-lg md:text-xl max-w-full md:w-[550px] font-thin">
+              <span className="text-gray-800 py-2 md:py-4 text-lg md:text-xl max-w-full md:w-[550px] font-thin ml-2">
                 Leverage AI models to craft innovative applications and streamline development workflows with versatile tools.
               </span>
               <div className="relative md:absolute flex items-center gap-2 mt-6 md:mt-0 md:top-[650px] lg:top-[490px] md:ml-3">
@@ -131,7 +137,7 @@ const sections = [
             <div className="w-full md:w-3/5 mt-8 md:mt-0">
               <img
                 src={Supechat_screen}
-                className="rounded-lg w-full h-auto md:h-[480px] shadow-xl"
+                className="rounded-lg w-full h-auto md:h-[480px] shadow-2xl"
                 alt="Superchat Screenshot"
               />
             </div>
@@ -150,6 +156,7 @@ const sections = [
      title={'Natural Language Processing APIs'}
      description={'Text Summarization & Abstractive Question Answering and Sentiment Analysis & Topic Classification'}
      logo={natural_language_logo}
+     bg_svg={finance_bg}
      items={[
         {
             title:'Legal',
@@ -186,6 +193,7 @@ const sections = [
     title={'Computer Vision APIs'}
     description={'Object Detection & Image Classification and Video Analytics'}
     logo={computer_vision_logo}
+    bg_svg={education_bg}
     items={[
         {
             title:'Retail',
@@ -225,6 +233,7 @@ const sections = [
     title={'Speech and Audio Processing APIs'}
     description={'Speech-to-Text & Text-to-Speech Services and Language Translation & Transcription Services'}
     logo={speech_audio_logo}
+    bg_svg={travel_bg}
     items={[
         {
             title:'Contact Centers (Telecom)',
@@ -262,6 +271,7 @@ const sections = [
     title={'Recommendation Systems and Personalization APIs'}
     description={'Internal Resource Recommendations and Privacy-Preserving E-Commerce or Service Recommendations'}
     logo={reccomendation_sys_logo}
+    bg_svg={health_bg}
     items={[
         {
             title:'Corporate Training',
@@ -299,6 +309,7 @@ const sections = [
     title={'Predictive Analytics and Forecasting APIs'}
     description={'Demand Forecasting & Supply Chain Optimization and Real-Time Risk Scoring, '}
     logo={prediction_logo}
+    bg_svg={reatil_bg}
     items={[
         {
             title:'Food & Beverage',
@@ -331,13 +342,13 @@ const sections = [
     );
   }
 const DataCard = ({ title, items }) => (
-    <div className="bg-gray-100 shadow-xl rounded-lg p-6 m-4">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">{title}</h2>
+    <div className="bg-white shadow-xl rounded-lg p-6 m-4">
+      <h2 className="text-2xl font-bold bg-gradient-to-r from-[#6F036C] to-[#FF6F61E5] bg-clip-text text-transparent mb-4">{title}</h2>
       <ul className="space-y-3">
         {items.map((item, index) => (
           <li key={index} className="flex flex-col space-y-1">
-            <h3 className="text-lg font-semibold text-gray-700">{item.title}</h3>
-            <p className="text-gray-600">{item.description}</p>
+            <h3 className="text-md font-semibold text-gray-700">{item.title}</h3>
+            <p className="text-gray-600 text-sm">{item.description}</p>
           </li>
         ))}
       </ul>

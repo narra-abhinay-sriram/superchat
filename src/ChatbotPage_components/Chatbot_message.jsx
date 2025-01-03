@@ -1,4 +1,6 @@
 import superchatLogo from "../assets/superchat_logo.png";
+import superchatLogo_white from "../assets/superchat_logo_white.png"
+
 import { useSelector } from "react-redux";
 
 const Chatbot_Message = ({ content, type = "text", isLoading }) => {
@@ -32,15 +34,15 @@ const Chatbot_Message = ({ content, type = "text", isLoading }) => {
         >
           {type === "bot" && isLoading ? (
             <img
-              src={superchatLogo}
+              src={darkmode ? superchatLogo_white :superchatLogo}
               alt="Loading"
-              className="w-6 h-6 animate-spin"
+              className="w-6 h-6 animate-spin bg-transparent"
             />
           ) : (
             <img
-              src={superchatLogo}
-              alt="Superchat Logo"
-              className="w-6 h-6 bg-white"
+            src={darkmode ? superchatLogo_white :superchatLogo}
+            alt="Superchat Logo"
+              className="w-6 h-6 bg-transparent"
             />
           )}
         </div>

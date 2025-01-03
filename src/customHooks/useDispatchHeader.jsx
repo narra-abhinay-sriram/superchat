@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
-import { changeforbusiness, changeForDevPage } from "../ReduxStateManagement/user"
+import { changeforbusiness, changeForDevPage, changeSuperchip } from "../ReduxStateManagement/user"
 
 export default function useDispatchHeader() {
   
@@ -11,6 +11,7 @@ export default function useDispatchHeader() {
         dispatch(changeForDevPage(false))
 
         dispatch(changeforbusiness(false))
+        dispatch(changeSuperchip(false))
 
       },[])
 }

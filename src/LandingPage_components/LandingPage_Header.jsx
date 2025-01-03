@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 export default function LandingPage_Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { fordevelopersPage,forbusiness} = useSelector(store=>store.user)
+  const { fordevelopersPage,forbusiness,superchip} = useSelector(store=>store.user)
 
   return (
     <div className="flex justify-between items-center h-[60px] bg-slate-50 px-4">
@@ -34,8 +34,10 @@ export default function LandingPage_Header() {
         <Link to={'/forbusiness'}>
         <span className={`hover:underline cursor-pointer ${forbusiness && 'underline'}`}>For Businesses</span>
         </Link>
-       
-        <span className="hover:underline cursor-pointer">Super Chip</span>
+       <Link to={'/superchip'}>
+       <span className={`hover:underline cursor-pointer ${superchip && 'underline'}`}>Super Chip</span>
+
+       </Link>
       </div>
 
       {/* Hamburger Menu */}
@@ -68,13 +70,15 @@ export default function LandingPage_Header() {
           </span>
           </Link>
           
-         
-          <span
-            className="hover:underline cursor-pointer text-custom-purple text-[18px]"
+         <Link to={'/superchip'}>
+         <span
+            className={`hover:underline cursor-pointer text-custom-purple text-[18px] ${forbusiness && 'underline'}`}
             onClick={() => setIsMenuOpen(false)}
           >
             Super Chip
           </span>
+         </Link>
+          
         </div>
       )}
     </div>

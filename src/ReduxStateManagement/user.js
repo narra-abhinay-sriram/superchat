@@ -7,7 +7,8 @@ const userslice=createSlice({
         sidebarReduced:true,
         voiceMode:false,
         fordevelopersPage:false,
-        forbusiness:false
+        forbusiness:false,
+        superchip:false
     },
     reducers:{
         changetodarkmode:(state,action)=>{
@@ -30,12 +31,23 @@ const userslice=createSlice({
         },
         changeforbusiness:(state,action)=>{
             state.forbusiness=action.payload
+        },
+        changeSuperchip:(state,action)=>{
+            state.superchip=action.payload
+
         }
         
         
     }
 })
 
-export const{changetodarkmode,changesidebarwidth,uploadsubscription,uploaduserEmail,changeVoiceMode,changeForDevPage,changeforbusiness}=userslice.actions
+export const{changetodarkmode,
+    changesidebarwidth,
+    uploadsubscription,
+    uploaduserEmail,
+    changeVoiceMode,
+    changeForDevPage,
+    changeforbusiness,
+changeSuperchip}=userslice.actions
 
 export default userslice.reducer

@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function ItemList({title, description, logo}) {
   return (
-    <div className="flex flex-col items-center bg-slate-100 shadow-md rounded-lg p-1 w-full max-w-[320px] mx-auto">
+    <div className="flex flex-col items-center bg-white shadow-md rounded-lg p-1 w-full max-w-[320px] mx-auto">
       <img 
         src={logo} 
         alt={title} 

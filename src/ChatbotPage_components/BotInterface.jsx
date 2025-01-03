@@ -17,7 +17,6 @@ import { Capabilities, questionSets } from "../Utils/constants";
 import { logout } from "../ReduxStateManagement/authslice";
 import superchatLogo_white from "../assets/superchat_logo_white.png"
 import RenderLogo from "./BotInterface_components/RenderLogo";
-import VoiceInterface from "./BotInterface_components/VoiceInterface";
 import { changeVoiceMode } from "../ReduxStateManagement/user";
 ///import useSubscribed from "../customHooks/useSubscribed";
 
@@ -294,7 +293,7 @@ if (data.message)
 
   const renderInputArea = () => (
     // <div className="fixed bottom-1.5 w-full max-w-4xl mr-28">
-    <div className="fixed bottom-1.5 w-full max-w-4xl md:max-w-3xl sm:max-w-2xl xs:max-w-full md:mr-20 sm:mr-10 xs:mr-0">
+    <div className="fixed bottom-1.5 w-full pr-6 pl-1 lg:max-w-4xl md:max-w-3xl sm:max-w-2xl xs:max-w-fit md:mr-20 ">
       <div className="flex items-center gap-0">
         {/* Responsive dropdown for small devices */}
         <div className="sm:hidden relative">
@@ -353,7 +352,7 @@ if (data.message)
         </div>
   
         {/* Existing toggle for sm and above */}
-        <div className="hidden sm:flex rounded-lg bg-white shadow-sm p-1 mx-5 gap-1 bg-white border-2 dark:bg-[#3A3A3A] m-4">
+        <div className="hidden sm:flex rounded-lg shadow-sm p-1 mx-5 gap-1 bg-white border-2 dark:bg-[#3A3A3A] m-4">
           {[
             { type: "csv", icon: GrDocumentCsv},
             { type: "pdf", icon: GrDocumentPdf },
@@ -405,7 +404,10 @@ if (data.message)
       darkmode 
         ? "bg-white text-black" 
         : "bg-gray-100 text-black"
-    }`}
+    } placeholder:text-xs
+        sm:placeholder:text-base
+        md:placeholder:text-base
+        lg:placeholder:text-base`}
     style={{
       margin: '20px', // Adjust margins as needed
     }}
@@ -486,7 +488,7 @@ if (data.message)
               style={{ marginTop: "180px" }} >
               <div className="hidden sm:block">
               <h3 className={`font-semibold mt-2 ${
-                  darkmode ? "text-gray-300" : "text-gray-800"} text-center`}>
+                  darkmode ? "text-gray-300" : "text-gray-800"} text-center text-xl`}>
                   Examples
                 </h3>
                 {selectedSet.examples.map((example, idx) => (
@@ -500,7 +502,7 @@ if (data.message)
                       darkmode
                         ? "bg-[#3A3A3A] text-gray-300 hover:bg-[#4A4A4A]"
                         : "bg-black text-white hover:bg-[#1A1A1A]"
-                      } w-full p-1  rounded-lg shadow-md mt-3 flex justify-center items-center`}
+                      } w-full py-8 pl-4 pr-7   rounded-lg shadow-md mt-3 flex justify-center items-center`}
                       style={{
                         height: "50px", // Fixed height
                         width: "250px", // Adjust to parent width
@@ -515,7 +517,7 @@ if (data.message)
 
               <div className="hidden sm:block">
                 <h3 className={`font-semibold mt-2 
-                  ${darkmode ? "text-gray-300" : "text-gray-800"} text-center `}>
+                  ${darkmode ? "text-gray-300" : "text-gray-800"} text-center text-xl `}>
                   Capabilities
                 </h3>
                 {Capabilities.map((capability, idx) => (
@@ -525,7 +527,7 @@ if (data.message)
                       darkmode
                         ? "bg-[#3A3A3A] text-gray-300 hover:bg-[#4A4A4A]"
                         : "bg-black text-white hover:bg-[#1A1A1A]"
-                    } w-full p-1 rounded-lg shadow-md mt-3 flex justify-center items-center`}
+                    } w-full  py-8 pl-4 pr-7  rounded-lg shadow-md mt-3 flex justify-center items-center`}
                     style={{
                       height: "50px", // Fixed height
                       width: "250px", // Adjust to parent width

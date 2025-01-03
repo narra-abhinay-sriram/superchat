@@ -269,17 +269,246 @@ export default function VoiceInterface() {
 
                 {/* Animated state indicators */}
                 {listening && !speaking && !processing && (
-                    <AnimatedText>Listening...</AnimatedText>
+                    <>
+                    <ListeningRobot />
+                    <AnimatedText className="text-blue-500 mt-2">Listening...</AnimatedText>
+
+                    </>
+                    
                 )}
                 
                 {processing && !speaking && (
-                    <AnimatedText className="text-blue-500">Processing...</AnimatedText>
+                    <>
+                    <ProcessingAnimation />
+
+                    </>
                 )}
                 
                 {speaking && (
-                    <AnimatedText className="text-green-500">Speaking...</AnimatedText>
+                    <SpeakingRobot />
                 )}
             </div>
         </div>
     );
 }
+
+
+
+const ListeningRobot = () => {
+  return (
+    <div className="relative w-32 h-44 mx-auto mt-12 bg-gradient-to-br from-slate-900 to-blue-950 rounded-[10px] shadow-lg border-2 border-cyan-400">
+      {/* Hair */}
+      <div className="absolute -top-8 -left-5 -right-5 h-18 bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 rounded-t-[100px] overflow-hidden">
+        <div className="absolute w-10 h-16 bg-gradient-to-b from-blue-400 to-cyan-500 top-2 left-5 rounded-t-[50px] rotate-[15deg]" />
+        <div className="absolute w-10 h-16 bg-gradient-to-b from-blue-400 to-cyan-500 top-2 right-5 rounded-t-[50px] -rotate-[15deg]" />
+        <div className="absolute w-14 h-14 bg-gradient-to-br from-cyan-400 to-blue-500 -top-9 left-1/2 -translate-x-1/2 rounded-full shadow-lg" />
+      </div>
+      {/* Ears */}
+      <div className="absolute -left-10 top-14 w-6 h-12 bg-gradient-to-r from-slate-900 to-blue-950 rounded-3xl border-2 border-cyan-400">
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-cyan-400 rounded-full animate-pulse" />
+      </div>
+      <div className="absolute -right-10 top-14 w-6 h-12 bg-gradient-to-l from-slate-900 to-blue-950 rounded-3xl border-2 border-cyan-400">
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-cyan-400 rounded-full animate-pulse" />
+      </div>
+      {/* Eyes */}
+      <div className="absolute left-7 top-[64px] w-6 h-6 bg-black border-2 border-cyan-400 rounded-full shadow-md shadow-cyan-400/50">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-cyan-400 rounded-full animate-pulse" />
+        {/* Eyelashes */}
+        <div className="absolute -top-2 left-1/4 w-0.5 h-2 bg-cyan-400 shadow-lg shadow-cyan-400/50" />
+        <div className="absolute -top-2 left-1/2 w-0.5 h-2 bg-cyan-400 shadow-lg shadow-cyan-400/50" />
+        <div className="absolute -top-2 right-1/4 w-0.5 h-2 bg-cyan-400 shadow-lg shadow-cyan-400/50" />
+      </div>
+      <div className="absolute right-7 top-[64px] w-6 h-6 bg-black border-2 border-cyan-400 rounded-full shadow-md shadow-cyan-400/50">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-cyan-400 rounded-full animate-pulse" />
+        {/* Eyelashes */}
+        <div className="absolute -top-2 left-1/4 w-0.5 h-2 bg-cyan-400 shadow-lg shadow-cyan-400/50" />
+        <div className="absolute -top-2 left-1/2 w-0.5 h-2 bg-cyan-400 shadow-lg shadow-cyan-400/50" />
+        <div className="absolute -top-2 right-1/4 w-0.5 h-2 bg-cyan-400 shadow-lg shadow-cyan-400/50" />
+      </div>
+      {/* Lips */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-10 h-3 bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 rounded-full shadow-lg" />
+      
+      {/* Sound Waves */}
+      <div className="absolute -left-14 top-16">
+        {[0, 1, 2].map((i) => (
+          <div
+            key={`left-wave-${i}`}
+            className="absolute w-4 h-4 border-2 border-cyan-400 rounded-full animate-ping opacity-75"
+            style={{
+              animationDelay: `${i * 0.4}s`,
+              animationDuration: "1.5s",
+              boxShadow: "0 0 10px rgba(34, 211, 238, 0.5)"
+            }}
+          />
+        ))}
+      </div>
+      <div className="absolute -right-14 top-16">
+        {[0, 1, 2].map((i) => (
+          <div
+            key={`right-wave-${i}`}
+            className="absolute w-4 h-4 border-2 border-cyan-400 rounded-full animate-ping opacity-75"
+            style={{
+              animationDelay: `${i * 0.4}s`,
+              animationDuration: "1.5s",
+              boxShadow: "0 0 10px rgba(34, 211, 238, 0.5)"
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+
+const ProcessingAnimation = () => {
+  return (
+    <div className="relative w-32 h-44 mx-auto mt-12 bg-gradient-to-br from-slate-900 to-blue-950 rounded-[10px] shadow-lg border-2 border-cyan-400">
+      {/* Circuit Board Pattern */}
+      <div className="absolute -top-8 -left-5 -right-5 h-18 bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 rounded-t-[100px] overflow-hidden">
+        <div className="absolute w-10 h-16 bg-gradient-to-b from-blue-400 to-cyan-500 top-2 left-5 rounded-t-[50px] rotate-[15deg]">
+          <div className="absolute top-2 left-2 w-1 h-1 bg-cyan-200 rounded-full animate-pulse" />
+          <div className="absolute bottom-2 right-2 w-1 h-1 bg-cyan-200 rounded-full animate-pulse" />
+        </div>
+        <div className="absolute w-10 h-16 bg-gradient-to-b from-blue-400 to-cyan-500 top-2 right-5 rounded-t-[50px] -rotate-[15deg]">
+          <div className="absolute top-2 right-2 w-1 h-1 bg-cyan-200 rounded-full animate-pulse" />
+          <div className="absolute bottom-2 left-2 w-1 h-1 bg-cyan-200 rounded-full animate-pulse" />
+        </div>
+        <div className="absolute w-14 h-14 bg-gradient-to-br from-cyan-400 to-blue-500 -top-9 left-1/2 -translate-x-1/2 rounded-full shadow-lg">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-cyan-200 rounded-full animate-pulse" />
+        </div>
+      </div>
+      
+      {/* Connection Points */}
+      <div className="absolute -left-10 top-14 w-6 h-12 bg-gradient-to-r from-slate-900 to-blue-950 rounded-3xl border-2 border-cyan-400">
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-cyan-400 rounded-full animate-pulse" />
+      </div>
+      <div className="absolute -right-10 top-14 w-6 h-12 bg-gradient-to-l from-slate-900 to-blue-950 rounded-3xl border-2 border-cyan-400">
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-cyan-400 rounded-full animate-pulse" />
+      </div>
+      
+      {/* Processing Indicators */}
+      <div className="absolute left-7 top-[64px] w-6 h-6 bg-black border-2 border-cyan-400 rounded-full shadow-md shadow-cyan-400/50">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-cyan-400 rounded-full animate-ping" />
+      </div>
+      <div className="absolute right-7 top-[64px] w-6 h-6 bg-black border-2 border-cyan-400 rounded-full shadow-md shadow-cyan-400/50">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-cyan-400 rounded-full animate-ping" />
+      </div>
+      
+      {/* Loading Lines */}
+      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-16 flex flex-col gap-2">
+        {[0, 1, 2].map((i) => (
+          <div
+            key={`loading-line-${i}`}
+            className="h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full"
+            style={{
+              animation: "loadingLine 2s ease-in-out infinite",
+              animationDelay: `${i * 0.3}s`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Central Loading Circle */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <div className="w-8 h-8 rounded-full border-2 border-cyan-400 border-t-transparent animate-spin" />
+      </div>
+
+      {/* Processing Text */}
+      <div className="absolute -bottom-10 left-1/2 -translate-x-1/2">
+        <div className="text-sm font-bold text-cyan-400 tracking-wider drop-shadow-lg animate-pulse">
+          PROCESSING
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes loadingLine {
+          0% {
+            width: 0%;
+            opacity: 0;
+          }
+          50% {
+            width: 100%;
+            opacity: 1;
+          }
+          100% {
+            width: 0%;
+            opacity: 0;
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
+
+const SpeakingRobot = () => {
+  return (
+    <div className="relative w-32 h-44 mx-auto mt-12 bg-gradient-to-br from-slate-900 to-blue-950 rounded-[10px] shadow-lg border-2 border-cyan-400">
+      {/* Circuit Board Pattern */}
+      <div className="absolute -top-8 -left-5 -right-5 h-18 bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 rounded-t-[100px] overflow-hidden">
+        <div className="absolute w-10 h-16 bg-gradient-to-b from-blue-400 to-cyan-500 top-2 left-5 rounded-t-[50px] rotate-[15deg]">
+          <div className="absolute top-2 left-2 w-1 h-1 bg-cyan-200 rounded-full animate-pulse" />
+          <div className="absolute bottom-2 right-2 w-1 h-1 bg-cyan-200 rounded-full animate-pulse" />
+        </div>
+        <div className="absolute w-10 h-16 bg-gradient-to-b from-blue-400 to-cyan-500 top-2 right-5 rounded-t-[50px] -rotate-[15deg]">
+          <div className="absolute top-2 right-2 w-1 h-1 bg-cyan-200 rounded-full animate-pulse" />
+          <div className="absolute bottom-2 left-2 w-1 h-1 bg-cyan-200 rounded-full animate-pulse" />
+        </div>
+        <div className="absolute w-14 h-14 bg-gradient-to-br from-cyan-400 to-blue-500 -top-9 left-1/2 -translate-x-1/2 rounded-full shadow-lg">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-cyan-200 rounded-full animate-pulse" />
+        </div>
+      </div>
+      
+      {/* Connection Points */}
+      <div className="absolute -left-10 top-14 w-6 h-12 bg-gradient-to-r from-slate-900 to-blue-950 rounded-3xl border-2 border-cyan-400">
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-cyan-400 rounded-full animate-pulse" />
+      </div>
+      <div className="absolute -right-10 top-14 w-6 h-12 bg-gradient-to-l from-slate-900 to-blue-950 rounded-3xl border-2 border-cyan-400">
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-cyan-400 rounded-full animate-pulse" />
+      </div>
+      
+      {/* Eyes */}
+      <div className="absolute left-7 top-[64px] w-6 h-6 bg-black border-2 border-cyan-400 rounded-full shadow-md shadow-cyan-400/50">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-cyan-400 rounded-full" />
+      </div>
+      <div className="absolute right-7 top-[64px] w-6 h-6 bg-black border-2 border-cyan-400 rounded-full shadow-md shadow-cyan-400/50">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-cyan-400 rounded-full" />
+      </div>
+      
+      {/* Animated Speaking Mouth */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-0.5">
+        <div className="relative w-12 h-6 bg-black rounded-lg border-2 border-cyan-400 overflow-hidden shadow-lg shadow-cyan-400/30">
+          {/* Sound Wave Animation */}
+          <div className="absolute top-0 left-0 w-full h-full flex justify-around items-center">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <div
+                key={`wave-${i}`}
+                className="w-1.5 bg-cyan-400 rounded-full"
+                style={{
+                  height: '30%',
+                  animation: 'speaking 0.5s ease-in-out infinite',
+                  animationDelay: `${i * 0.1}s`
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Speaking Text */}
+      <div className="absolute -bottom-10 left-1/2 -translate-x-1/2">
+        <div className="text-sm font-bold text-cyan-400 tracking-wider drop-shadow-lg">
+          SPEAKING
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes speaking {
+          0%, 100% { height: 30%; }
+          50% { height: 70%; }
+        }
+      `}</style>
+    </div>
+  );
+};
+
