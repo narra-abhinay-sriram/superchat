@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import superchatLogo from "../../assets/superchat_logo.png";
-import superchatLogo_white from "../../assets/superchat_logo_white.png"
+import superchatLogo from "../../assets/superchat_logo.webp";
+import superchatLogo_white from "../../assets/superchat_logo_white.webp"
 
 const RenderLogo = () => {
   const { darkmode } = useSelector((store) => store.user);
