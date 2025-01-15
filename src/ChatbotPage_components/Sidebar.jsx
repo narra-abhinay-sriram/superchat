@@ -9,7 +9,7 @@ import {
   FaRegSun,
   FaRegUserCircle,
 } from "react-icons/fa";
-import superchatLogo from "../assets/superchat_logo.png";
+import superchatLogo from "../assets/superchat_logo.webp";
 import { changesidebarwidth, changetodarkmode } from "../ReduxStateManagement/user";
 import { clear_chat_api } from "../Utils/Apis";
 import superchatLogo_white from "../assets/superchat_logo_white.png";

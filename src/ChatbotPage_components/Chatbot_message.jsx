@@ -4,8 +4,8 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Copy, Check } from 'lucide-react';
-import superchatLogo from "../assets/superchat_logo.png";
-import superchatLogo_white from "../assets/superchat_logo_white.png";
+import superchatLogo from "../assets/superchat_logo.webp";
+import superchatLogo_white from "../assets/superchat_logo_white.webp";
 import { useSelector } from "react-redux";
 
 const CopyButton = ({ code }) => {
