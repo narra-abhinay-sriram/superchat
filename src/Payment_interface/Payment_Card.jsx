@@ -14,9 +14,9 @@ export default function Payment_Card() {
         }),
       });
   const data=await res.json()
-  console.log(data)
+ // console.log(data)
       if (data.response=="Subscription updated successfully") {
-        console.log("Subscription updated successfully!");
+       // console.log("Subscription updated successfully!");
         // Redirect to the chatbot page
         navigate("/chatbot")
       } 
@@ -31,7 +31,7 @@ export default function Payment_Card() {
         description: "Monthly Subscription",
         image: "/logo.png", // Optional: Add your logo URL
         handler: async function (response) {
-          console.log("Payment Successful", response);
+        //  console.log("Payment Successful", response);
           // Call the subscription API
           await handleSubscription();
         },
@@ -52,7 +52,7 @@ export default function Payment_Card() {
   
       const rzp = new window.Razorpay(options);
       rzp.on("payment.failed", function (response) {
-        console.error("Payment Failed", response.error);
+       // console.error("Payment Failed", response.error);
         alert("Payment failed. Please try again.");
       });
       rzp.open();

@@ -3,18 +3,20 @@ import { HelmetProvider } from "react-helmet-async";
 import  { Suspense, lazy } from "react";
 
 // Lazy Loaded Pages
-const AboutUs = lazy(() => import("./LandingPage_components/LandingPage_Footer_Components/Aboutus"));
-const ContactUs = lazy(() => import("./LandingPage_components/LandingPage_Footer_Components/Contactus"));
-const TermsAndConditions = lazy(() => import("./LandingPage_components/LandingPage_Footer_Components/Terms_Conditions"));
+const ForBusiness = lazy(()=>import ('./LandingPage_components/LandingPage_header_components/ForBusiness'))
 const CancellationRefundPolicies = lazy(() => import("./LandingPage_components/LandingPage_Footer_Components/Cancellation_refund_policies"));
 const PrivacyPolicy = lazy(() => import("./LandingPage_components/LandingPage_Footer_Components/Privacy_policy"));
-const ClearConvoLoading = lazy(() => import("./Components/ClearConvoLoading"));
 
 // Critical Pages Loaded Upfront
 import LandingPage from "./pages/LandingPage";
 import SignupPage from "./pages/SignupPage";
+import AboutUs from "./LandingPage_components/LandingPage_Footer_Components/Aboutus"
+import ContactUs from "./LandingPage_components/LandingPage_Footer_Components/Contactus"
+import TermsAndConditions from "./LandingPage_components/LandingPage_Footer_Components/Terms_Conditions"
+
+
+
 import For_developers from "./LandingPage_components/LandingPage_header_components/For_developers";
-import ForBusiness from "./LandingPage_components/LandingPage_header_components/ForBusiness";
 import Super_chip from "./LandingPage_components/LandingPage_header_components/Super_chip";
 import ChatbotInterface from "./pages/Chatbot_Interface";
 
@@ -38,7 +40,6 @@ function App() {
             <Route path="/terms-conditions" element={<TermsAndConditions />} />
             <Route path="/cancellation-policy" element={<CancellationRefundPolicies />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/clear" element={<ClearConvoLoading />} />
 
             {/* 404 Fallback */}
             <Route path="*" element={<div>404 Not Found</div>} />

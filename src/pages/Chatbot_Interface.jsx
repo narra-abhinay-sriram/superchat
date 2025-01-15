@@ -4,7 +4,8 @@ import Sidebar from "../ChatbotPage_components/Sidebar";
 import ChatbotHeaderSmallScreen from "../ChatbotPage_components/ChatbotHeaderSmallScreen";
 import useIsSmallScreen from "../customHooks/useIsSmallScreen";
 import { useSelector } from "react-redux";
-import VoiceInterface from "../ChatbotPage_components/BotInterface_components/VoiceInterface";
+import { Suspense,lazy } from 'react';
+const VoiceInterface =lazy(()=>import ('../ChatbotPage_components/BotInterface_components/VoiceInterface'))
 
 export default function ChatbotInterface() {
   const isSmallScreen = useIsSmallScreen();
@@ -24,7 +25,9 @@ export default function ChatbotInterface() {
           <meta name="description" content="Interact with Superchat's AI assistant using voice commands. Experience hands-free, natural conversations." />
           <meta name="robots" content="noindex, follow" />
         </Helmet>
+        <Suspense fallback={<div className='text-center '>Loading...</div>}>
         <VoiceInterface />
+        </Suspense>
       </>
     );
   }

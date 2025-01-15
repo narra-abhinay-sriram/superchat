@@ -69,7 +69,7 @@ export default function SignupPage() {
         seterror(data.error);
       }
     } catch (err) {
-      console.log(err)
+     // console.log(err)
       seterror("Something went wrong. Please try again.");
     } finally {
       setloading(false);
@@ -78,7 +78,7 @@ export default function SignupPage() {
 
   const googleLogin = useGoogleLogin({ 
     onSuccess: async (tokenResponse) => {
-      console.log("Full token response:", tokenResponse);
+      //console.log("Full token response:", tokenResponse);
     }
   });
 

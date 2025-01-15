@@ -123,8 +123,7 @@ export default function LandingPage__Left_Container() {
         >
           Accelerate Conversations, Power Through Data
         </h2>
-        <p className="sm:text-[18px] text-sm sm:w-[500px] w-fit sm:text-slate-700 text-gray-500 font-light">
-          Chat with AI, create code, teach yourself new things, analyze your
+        <p className="text-base sm:text-lg w-full sm:w-[32rem] text-gray-400 font-normal ">          Chat with AI, create code, teach yourself new things, analyze your
           documents, summarize large documents, and query documents, images,
           and more.
         </p>
@@ -132,7 +131,7 @@ export default function LandingPage__Left_Container() {
 
       {/* Call-to-Action */}
       <div
-        className="absolute sm:top-[360px] sm:left-[102px] left-[15px] top-[310px] flex items-center gap-2"
+        className="absolute pt-10 sm:top-[360px] sm:left-[102px] left-[15px] top-[310px] flex items-center gap-2"
         role="region"
         aria-labelledby="cta-header"
       >
@@ -143,7 +142,7 @@ export default function LandingPage__Left_Container() {
           Call to Action
         </h3>
         <button
-          className="hover:cursor-pointer sm:text-[20px] text-[18px] font-[500] bg-gradient-to-r from-[#6F036C] to-[#FF6F61E5] bg-clip-text text-transparent"
+          className="hover:cursor-pointer  sm:text-[20px] text-[18px] font-[500] bg-gradient-to-r from-[#6F036C] to-[#FF6F61E5] bg-clip-text text-transparent"
           onClick={toggleTrysuperchat}
           aria-label="Try Superchat now and sign up"
         >

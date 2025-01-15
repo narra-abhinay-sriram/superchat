@@ -55,7 +55,7 @@ export default function ContactUs() {
         setErrorMessage(result.message || 'Failed to send message. Please try again.');
       }
     } catch (error) {
-      console.error('Error:', error);
+     // console.error('Error:', error);
       setErrorMessage('An error occurred while sending the message. Please try again later.');
     } finally {
       setIsSubmitting(false);
