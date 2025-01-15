@@ -5,26 +5,23 @@ import  { Suspense, lazy } from "react";
 // Lazy Loaded Pages
 const ForBusiness = lazy(()=>import ('./LandingPage_components/LandingPage_header_components/ForBusiness'))
 const CancellationRefundPolicies = lazy(() => import("./LandingPage_components/LandingPage_Footer_Components/Cancellation_refund_policies"));
-const PrivacyPolicy = lazy(() => import("./LandingPage_components/LandingPage_Footer_Components/Privacy_policy"));
-
+const For_developers =lazy(()=>import ('./LandingPage_components/LandingPage_header_components/For_developers'))
+const Super_chip=lazy(()=>import('./LandingPage_components/LandingPage_header_components/Super_chip'))
 // Critical Pages Loaded Upfront
 import LandingPage from "./pages/LandingPage";
 import SignupPage from "./pages/SignupPage";
 import AboutUs from "./LandingPage_components/LandingPage_Footer_Components/Aboutus"
 import ContactUs from "./LandingPage_components/LandingPage_Footer_Components/Contactus"
 import TermsAndConditions from "./LandingPage_components/LandingPage_Footer_Components/Terms_Conditions"
-
-
-
-import For_developers from "./LandingPage_components/LandingPage_header_components/For_developers";
-import Super_chip from "./LandingPage_components/LandingPage_header_components/Super_chip";
+import PrivacyPolicy  from  "./LandingPage_components/LandingPage_Footer_Components/Privacy_policy"
 import ChatbotInterface from "./pages/Chatbot_Interface";
+import LoadingSpinner from "./Components/Loading";
 
 function App() {
   return (
     <HelmetProvider>
       <BrowserRouter basename="/">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div><LoadingSpinner/></div>}>
           <Routes>
             {/* Critical Pages */}
             <Route path="/" element={<LandingPage />} />

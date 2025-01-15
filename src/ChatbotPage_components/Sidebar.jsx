@@ -12,7 +12,7 @@ import {
 import superchatLogo from "../assets/superchat_logo.webp";
 import { changesidebarwidth, changetodarkmode } from "../ReduxStateManagement/user";
 import { clear_chat_api } from "../Utils/Apis";
-import superchatLogo_white from "../assets/superchat_logo_white.png";
+import superchatLogo_white from "../assets/superchat_logo_white.webp";
 import { useState } from "react";
 
 const Sidebar = () => {
