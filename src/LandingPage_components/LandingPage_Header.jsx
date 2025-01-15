@@ -20,7 +20,7 @@ export default function LandingPage_Header() {
     "@type": "Organization",
     "name": "SuperChat LLC",
     "url": BASE_URL,
-    "logo": `${BASE_URL}/assets/superchat_logo.png`,
+    "logo": `${BASE_URL}/assets/superchat_logo.webp`,
     
     "offers": [
       {

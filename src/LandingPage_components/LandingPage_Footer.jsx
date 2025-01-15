@@ -53,7 +53,7 @@ export default function LandingPage_Footer() {
             "@type": "Organization",
             "name": "Superchat",
             "url": "https://superchat.in",
-            "logo": "https://superchat.in/assets/superchat_logo.png",
+            "logo": "https://superchat.in/assets/superchat_logo.webp",
             "contactPoint": {
               "@type": "ContactPoint",
               "telephone": "",

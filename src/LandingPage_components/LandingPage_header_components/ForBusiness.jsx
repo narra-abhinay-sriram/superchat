@@ -6,9 +6,9 @@ import { changeforbusiness, changeForDevPage, changeSuperchip } from "../../Redu
 
 // Image imports
 import Supechat_screen from '../../assets/forbus/chat_app_screen.png';
-import reatil_logo from '../../assets/computer_vision/retail.jpg';
-import healthcare_logo from '../../assets/computer_vision/healthcare.jpg';
-import Bank_firms from '../../assets/predicting_analysis_forecasting/bank_firms.jpeg';
+import reatil_logo from '../../assets/computer_vision/retail.webp';
+import healthcare_logo from '../../assets/computer_vision/healthcare.webp';
+import Bank_firms from '../../assets/predicting_analysis_forecasting/bank_firms.webp';
 import customer_Engaging from '../../assets/forbus/cus_engage.jpeg';
 import internal_knowledge from '../../assets/forbus/internal_knowledge.jpeg';
 import govt_agencies from '../../assets/forbus/govt_agencies.jpeg';

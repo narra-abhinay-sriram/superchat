@@ -8,8 +8,8 @@ import {
   FaRegTrashAlt,
   FaRegUserCircle,
 } from 'react-icons/fa';
-import superchatLogo from '../assets/superchat_logo.png';
-import superchatLogo_white from "../assets/superchat_logo_white.png";
+import superchatLogo from '../assets/superchat_logo.webp';
+import superchatLogo_white from "../assets/superchat_logo_white.webp";
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../ReduxStateManagement/authslice';
 import { useNavigate } from 'react-router-dom';

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import '@fontsource/inter';
-import superchatLogo from '../assets/superchat_logo.png';
+import superchatLogo from '../assets/superchat_logo.webp';
 import { useNavigate } from 'react-router-dom';
 
 export default function LandingPage__Left_Container() {
@@ -20,7 +20,7 @@ export default function LandingPage__Left_Container() {
     "@type": "Product",
     "name": "SuperChat AI Assistant",
     "description": PAGE_DESCRIPTION,
-    "image": `${BASE_URL}/assets/superchat_logo.png`,
+    "image": `${BASE_URL}/assets/superchat_logo.webp`,
     "offers": {
       "@type": "Offer",
       "availability": "https://schema.org/InStock",
@@ -70,7 +70,7 @@ export default function LandingPage__Left_Container() {
         <meta property="og:type" content="website" />
         <meta property="og:title" content={PAGE_TITLE} />
         <meta property="og:description" content={PAGE_DESCRIPTION} />
-        <meta property="og:image" content={`${BASE_URL}/assets/superchat_logo.png`} />
+        <meta property="og:image" content={`${BASE_URL}/assets/superchat_logo.webp`} />
         <meta property="og:url" content={BASE_URL} />
         <meta property="og:site_name" content="SuperChat" />
         
@@ -78,7 +78,7 @@ export default function LandingPage__Left_Container() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={PAGE_TITLE} />
         <meta name="twitter:description" content={PAGE_DESCRIPTION} />
-        <meta name="twitter:image" content={`${BASE_URL}/assets/superchat_logo.png`} />
+        <meta name="twitter:image" content={`${BASE_URL}/assets/superchat_logo.webp`} />
         <meta name="twitter:site" content="@SuperChatAI" />
         
         {/* Additional SEO */}

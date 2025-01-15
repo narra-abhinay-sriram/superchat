@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../ReduxStateManagement/authslice";
 import LandingPage_Header from "../LandingPage_components/LandingPage_Header";
 import useDispatchHeader from '../customHooks/useDispatchHeader';
-import superchatLogo from '../assets/superchat_logo.png';
+import superchatLogo from '../assets/superchat_logo.webp';
 import { useGoogleLogin } from '@react-oauth/google';
 import { Helmet } from 'react-helmet-async';
 
