@@ -5,210 +5,181 @@ import {
   FaArrowLeft,
   FaArrowRight,
   FaCog,
-  FaMoon,
-  FaSun,
-  FaTrashAlt,
   FaBell,
   FaUserCircle,
+  FaRegTrashAlt,
+  FaRegMoon,
+  FaRegSun,
+  FaRegUserCircle,
 } from "react-icons/fa";
 import superchatLogo from "../assets/superchat_logo.png";
 import { changesidebarwidth, changetodarkmode } from "../ReduxStateManagement/user";
 import { clear_chat_api } from "../Utils/Apis";
-import superchatLogo_white from "../assets/superchat_logo_white.png"
-
+import superchatLogo_white from "../assets/superchat_logo_white.png";
+import { useState } from "react";
+import ClearConvoLoading from "../Components/ClearConvoLoading";
 
 const Sidebar = () => {
-  const { darkmode,sidebarReduced } = useSelector((store) => store.user);
+  const { darkmode, sidebarReduced } = useSelector((store) => store.user);
+  const [isDeleting, setIsdeleting] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const toggleSidebar = () => {
-    dispatch(changesidebarwidth())
-
+    dispatch(changesidebarwidth());
   };
 
-  const menuItemClass = (sidebarReduced) =>
-    `p-3 rounded-full flex items-center cursor-pointer ${
+  const menuItemClass = () =>
+    `p-2 rounded-full flex items-center cursor-pointer ${
       sidebarReduced
         ? "justify-center bg-gray-700 text-white"
-        :` gap-2 hover:bg-gray-300 ${
+        : ` gap-2 hover:bg-gray-300 ${
             darkmode ? "hover:bg-gray-600 text-white" : "text-gray-600"
           }`
     }`;
 
   const tooltipClass = `absolute left-12 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 bg-black text-white text-sm rounded-md px-2 py-1 whitespace-nowrap`;
-const handleclearconversations=async()=>{
-  try {
-  const resp=await fetch(clear_chat_api,{
-    method:"DELETE",
-    headers:{
-      Authorization:`Bearer ${localStorage.getItem("token")}` ,
-      "Content-Type":"application/json" 
+
+  const handleclearconversations = async () => {
+    setIsdeleting(true);
+    try {
+      const resp = await fetch(clear_chat_api, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await resp.json();
+      if (data.message === 'Token has expired!') {
+        dispatch(logout());
+        localStorage.removeItem("messages");
+        navigate("/signup");
+        return;
+      }
+      localStorage.removeItem('messages');
+      window.location.reload();
+      alert('Conversations cleared successfully');
+      setIsdeleting(false);
+    } catch (e) {
+      alert(e);
+      setIsdeleting(false);
     }
-  })
+  };
 
-  const data=await resp.json()
-   if (data.message=='Token has expired!')
-        {
-          dispatch(logout());
-          localStorage.removeItem("messages")
-        
-          navigate("/signup");
-          return;
-        }
-        localStorage.removeItem('messages');
-        window.location.reload()
+  const handleLogout = () => {
+    dispatch(logout());
+    localStorage.removeItem("messages");
+    navigate("/signup");
+  };
 
-        alert('Conversations cleared successfully');
-  }catch(e){
-    alert(e)
-  }
-}
+  const handleThemeToggle = () => {
+    const isdarkmode = localStorage.getItem("darkmode");
+    if (isdarkmode) {
+      localStorage.removeItem("darkmode");
+      dispatch(changetodarkmode(false));
+    } else {
+      localStorage.setItem("darkmode", true);
+      dispatch(changetodarkmode(true));
+    }
+  };
+
   return (
-    <div
-      className={`  ${ 
-        darkmode ? "bg-[#3A3B3C] text-white" : "bg-gray-300 text-gray-900"
-      } h-screen flex flex-col  ${
+    <aside
+      aria-label="Main Navigation Sidebar"
+      className={`${
+        darkmode ? "bg-[#3A3B3C] text-white" : "bg-[#777777] bg-opacity-5 text-gray-900"
+      } h-screen flex flex-col ${
         sidebarReduced ? "w-20" : "w-[230px]"
-      } fixed top-0 left-0 z-10 `}
+      } fixed top-0 left-0 z-10`}
     >
-      {/* Logo Section */}
-      {sidebarReduced && (
-  <div className="flex justify-center">
-    <img
-      src={darkmode ? superchatLogo_white : superchatLogo}
-      alt="Superchat Logo"
-      className="w-10 h-10 ml-4 mt-4"
-    />
-  </div>
-)}
+      {/* Logo and Brand Section */}
+      <header className="flex flex-col items-center p-4" role="banner">
+        {sidebarReduced ? (
+          <img
+            src={darkmode ? superchatLogo_white : superchatLogo}
+            alt="Superchat LLC Logo"
+            className="w-10 h-10 ml-4 mt-4"
+            width="40"
+            height="40"
+            loading="eager"
+          />
+        ) : (
+          <h1 
+            className={`text-xl font-[250px] pt-7 ml- bg-gradient-to-r ${
+              darkmode ? "from-[#F5EEF8] to-[#D0D3D4]" : "from-[#6F036C] to-[#FF6F61]"
+            } bg-clip-text text-transparent`}
+          >
+            Superchat LLC
+          </h1>
+        )}
+      </header>
 
-      {/* Expand/Collapse Button */}
-      <div className="flex items-center justify-center p-4">
-        <div className="flex items-center justify-between w-full">
-          {!sidebarReduced && (
-            <p className={`text-xl font-bold bg-gradient-to-r ${darkmode ? " from-[#F5EEF8] to-[#D0D3D4]" : " from-[#6F036C] to-[#FF6F61E5]"} bg-clip-text text-transparent`}>
-              Superchat LLC
-            </p>
-          )}
-          <div className="relative group ml-auto">
-            <div
-              onClick={toggleSidebar}
-              className={`p-2 rounded-full cursor-pointer ${
-                darkmode ? "bg-gray-100 text-black" : "bg-gray-800 text-white"
-              }`}
-            >
-              {sidebarReduced ? <FaArrowRight /> : <FaArrowLeft />}
-            </div>
-            <div
-              className={`${tooltipClass} ${
-                sidebarReduced ? "left-" : "right-"
-              }`}
-            >
-              {sidebarReduced ? "Expand " : "Collapse "}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Menu Items */}
-      <div className="flex flex-col items-start px-4 mt-auto mb-4">
-        {/* Settings */}
-      {/*  <div className="relative group mb-4 w-full">
-          <div className={menuItemClass(sidebarReduced)}>
-            <FaCog />
-            {!sidebarReduced && <span>Settings</span>}
-          </div>
-          {sidebarReduced && <div className={tooltipClass}>Settings</div>}
-        </div> */}
-
-        {/* Dark Mode Toggle */}
-        <div className="relative group mb-4 w-full">
-          <div onClick={() =>{ 
-            const isdarkmode=localStorage.getItem("darkmode")
-            if(isdarkmode)
-            {
-              localStorage.removeItem("darkmode")
-              dispatch(changetodarkmode(false))
-
-            }else{
-              localStorage.setItem("darkmode",true)
-              dispatch(changetodarkmode(true))
-            }
-            
-            }} className={menuItemClass(sidebarReduced)}>
-            {darkmode ? <FaSun /> : <FaMoon />}
-            {!sidebarReduced && <span>{darkmode ? "Light Theme" : "Dark Theme"}</span>}
-          </div>
-          {sidebarReduced && (
-            <div className={tooltipClass}>{darkmode ? "Light Theme" : "Dark Theme"}</div>
-          )}
-        </div>
-
-        {/* Clear Conversations */}
-        <div 
-        className="relative group mb-4 w-full">
-          <div className={menuItemClass(sidebarReduced)}>
-            <FaTrashAlt
-            className=" hover:text-gray-950"
-                    onClick={handleclearconversations}
-            />
-            {!sidebarReduced && <span
-            className=" hover:text-gray-950"
-              onClick={handleclearconversations}
-
-            >Clear Conversations</span>}
-          </div>
-          {sidebarReduced && <div
-                  onClick={handleclearconversations}
-
-          className={tooltipClass}>Clear Conversations</div>}
-        </div>
-
-        {/* Updates & FAQ */}
-        {/*
-        <div className="relative group mb-4 w-full">
-          <div className={menuItemClass(sidebarReduced)}>
-            <FaBell />
-            {!sidebarReduced && <span>Updates & FAQ</span>}
-          </div>
-          {sidebarReduced && <div className={tooltipClass}>Updates & FAQ</div>}
-        </div>
-         */}
-        {/* Logout */}
-        <div className="flex justify-start w-full">
-          {sidebarReduced ? (
-            <div className="relative group">
-              <FaUserCircle
-              onClick={() => {
-                dispatch(logout());
-                localStorage.removeItem("messages")
-                navigate("/signup");
-              }}
-                className={`text-2xl cursor-pointer ${
-                  darkmode ? "text-white hover:text-red-800" : "text-gray-500 hover:text-red-700"
-                }`}
-              />
-              <div className={tooltipClass}>Logout</div>
-            </div>
-          ) : (
+      {/* Navigation Menu */}
+      <nav className="flex flex-col items-start px-4 mt-auto mb-4" role="navigation">
+        <ul className="w-full " role="menu">
+          {/* Theme Toggle */}
+          <li className="relative group" role="none">
             <button
-              onClick={() => {
-                dispatch(logout());
-                localStorage.removeItem("messages")
-
-                navigate("/signup");
-              }}
-              className={`text-lg flex gap-2 items-center justify-center cursor-pointer ${
-                darkmode ? "text-white hover:text-red-800" : "text-gray-500 hover:text-red-700"
-              }`}            >
-              <FaUserCircle className="text-2xl" />
-              Log out
+              onClick={handleThemeToggle}
+              className={menuItemClass()}
+              role="menuitem"
+              aria-label={darkmode ? "Switch to Light Theme" : "Switch to Dark Theme"}
+              title={darkmode ? "Switch to Light Theme" : "Switch to Dark Theme"}
+            >
+              {darkmode ? <FaRegSun aria-hidden="true" /> : <FaRegMoon aria-hidden="true" />}
+              {!sidebarReduced && (
+                <span>{darkmode ? "Light Theme" : "Dark Theme"}</span>
+              )}
             </button>
-          )}
-        </div>
-      </div>
-    </div>
+            {sidebarReduced && <div className={tooltipClass} role="tooltip">{darkmode ? "Light Theme" : "Dark Theme"}</div>}
+          </li>
+
+          {/* Clear Conversations */}
+          <li className="relative group" role="none">
+            <button
+              className={menuItemClass()}
+              onClick={handleclearconversations}
+              role="menuitem"
+              aria-label="Clear all conversations"
+              disabled={isDeleting}
+              title="Clear all conversations"
+            >
+              <FaRegTrashAlt aria-hidden="true" className="hover:text-gray-950" />
+              {!sidebarReduced && <span>Clear Conversations</span>}
+              {isDeleting && <span className="sr-only">Clearing conversations...</span>}
+            </button>
+            {sidebarReduced && <div className={tooltipClass} role="tooltip">Clear Conversations</div>}
+          </li>
+
+          {/* Logout */}
+          <li className="relative group" role="none">
+            <button
+              onClick={handleLogout}
+              className={`${sidebarReduced ? "" : "ml-2"} flex gap-2 items-center justify-center cursor-pointer ${
+                darkmode ? "text-white hover:text-red-800" : "text-gray-500 hover:text-red-700"
+              }`}
+              role="menuitem"
+              aria-label="Log out of your account"
+              title="Log out"
+            >
+              {sidebarReduced ? (
+                <>
+                  <FaUserCircle aria-hidden="true" />
+                  <div className={tooltipClass} role="tooltip">Logout</div>
+                </>
+              ) : (
+                <>
+                  <FaRegUserCircle aria-hidden="true" className="text-lg" />
+                  <span>Log out</span>
+                </>
+              )}
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </aside>
   );
 };
 

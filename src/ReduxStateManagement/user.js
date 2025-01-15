@@ -4,7 +4,7 @@ const userslice=createSlice({
     name:"user",
     initialState:{
         darkmode:localStorage.getItem("darkmode"),
-        sidebarReduced:true,
+        sidebarReduced:false,
         voiceMode:false,
         fordevelopersPage:false,
         forbusiness:false,

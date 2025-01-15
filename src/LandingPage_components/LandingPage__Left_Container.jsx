@@ -1,64 +1,163 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import '@fontsource/inter';
 import superchatLogo from '../assets/superchat_logo.png';
 import { useNavigate } from 'react-router-dom';
 
 export default function LandingPage__Left_Container() {
   const [dynamicWord, setDynamicWord] = useState('chat');
-  const navigate=useNavigate()
-  const words = ['chat', 'intelligence', 'fast']; 
+  const navigate = useNavigate();
+  const words = ['chat', 'intelligence', 'fast'];
+
+  // SEO Constants
+  const BASE_URL = 'https://superchat.in';
+  const PAGE_TITLE = `SuperChat: Accelerate Conversations with AI-Powered ${dynamicWord}`;
+  const PAGE_DESCRIPTION = "Experience the future of communication with SuperChat's AI-powered platform. Create code, analyze documents, learn new concepts, and get instant answers. Start your AI journey today!";
+
+  // Schema markup for rich results
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "SuperChat AI Assistant",
+    "description": PAGE_DESCRIPTION,
+    "image": `${BASE_URL}/assets/superchat_logo.png`,
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "applicationCategory": "BusinessApplication",
+    "featureList": [
+      "AI-powered chat assistance",
+      "Code generation",
+      "Document analysis",
+      "Document summarization",
+      "Image analysis",
+      "Educational support"
+    ]
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
       setDynamicWord((prevWord) => {
         const currentIndex = words.indexOf(prevWord);
-        return words[(currentIndex + 1) % words.length]; 
+        return words[(currentIndex + 1) % words.length];
       });
-    }, 3000); 
+    }, 3000);
 
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, []);
 
+  const toggleTrysuperchat=()=>{
+    navigate('/signup');
+
+  }
+
   return (
-    <div className="flex flex-col relative">
-      <div className="absolute flex justify-center items-center gap-0 sm:top-[100px] sm:left-[100px] left-[15px] top-[115px]">
+    <section
+      className="flex flex-col relative"
+      aria-labelledby="superchat-header"
+      role="contentinfo"
+    >
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>{PAGE_TITLE}</title>
+        <meta name="description" content={PAGE_DESCRIPTION} />
+        <meta name="keywords" content="SuperChat, AI Chatbot, code generation, document analysis, AI assistant, document summarization, AI learning, image analysis, artificial intelligence chat" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={PAGE_TITLE} />
+        <meta property="og:description" content={PAGE_DESCRIPTION} />
+        <meta property="og:image" content={`${BASE_URL}/assets/superchat_logo.png`} />
+        <meta property="og:url" content={BASE_URL} />
+        <meta property="og:site_name" content="SuperChat" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={PAGE_TITLE} />
+        <meta name="twitter:description" content={PAGE_DESCRIPTION} />
+        <meta name="twitter:image" content={`${BASE_URL}/assets/superchat_logo.png`} />
+        <meta name="twitter:site" content="@SuperChatAI" />
+        
+        {/* Additional SEO */}
+        <link rel="canonical" href={BASE_URL} />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:locale" content="en_US" />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Helmet>
+
+      {/* Logo and Title */}
+      <div
+        className="absolute flex justify-center items-center gap-0 sm:top-[100px] sm:left-[100px] left-[15px] top-[115px]"
+        role="img"
+        aria-label="Superchat Logo and Dynamic Title"
+      >
         <img
           src={superchatLogo}
           alt="Superchat Logo"
-          className="sm:w-[70px] sm:h-[85px] w-12 h-12 "
-
+          className="sm:w-[70px] sm:h-[85px] w-12 h-12"
         />
-        <p
-          className="font-inter font-[350] py-1 ml- text-left leading-[100px] sm:text-[90px] text-[40px] bg-gradient-to-r from-[#6F036C] to-[#FF6F61E5] bg-clip-text text-transparent">
+        <h1
+          id="superchat-header"
+          className="font-inter font-[350] py-1 text-left leading-[100px] sm:text-[90px] text-[40px] bg-gradient-to-r from-[#6F036C] to-[#FF6F61E5] bg-clip-text text-transparent"
+        >
           uper<span className="ml-1 mr-1">{dynamicWord}</span>
-        </p>
+        </h1>
       </div>
 
-      <div className="absolute sm:top-[220px] sm:left-[99px] top-[205px] left-[15px]">
-        <p className="sm:text-[22px] text-md font-[500] sm:mb-2">
+      {/* Subtitle and Description */}
+      <div
+        className="absolute sm:top-[220px] sm:left-[99px] top-[205px] left-[15px]"
+        role="region"
+        aria-labelledby="superchat-subtitle"
+      >
+        <h2
+          id="superchat-subtitle"
+          className="sm:text-[22px] text-md font-[500] sm:mb-2"
+        >
           Accelerate Conversations, Power Through Data
-        </p>
-        <p className="sm:text-[18px] text-sm sm:w-[500px] w-fit  sm:text-slate-700 text-gray-500 font-light">
-          Chat with AI, Create Code, Teach yourself new things, Analyze your documents, Summarize large documents, Query documents, images and more ...
+        </h2>
+        <p className="sm:text-[18px] text-sm sm:w-[500px] w-fit sm:text-slate-700 text-gray-500 font-light">
+          Chat with AI, create code, teach yourself new things, analyze your
+          documents, summarize large documents, and query documents, images,
+          and more.
         </p>
       </div>
 
-      
-      <div className="absolute sm:top-[360px]  sm:left-[102px] left-[15px] top-[310px] flex items-center gap-2">
-        <p 
-          className=" hover:cursor-pointer sm:text-[20px] text-[18px] font-[500] bg-gradient-to-r from-[#6F036C] to-[#FF6F61E5] bg-clip-text text-transparent"
-          onClick={()=>{
-          navigate("/signup")
-          }}
+      {/* Call-to-Action */}
+      <div
+        className="absolute sm:top-[360px] sm:left-[102px] left-[15px] top-[310px] flex items-center gap-2"
+        role="region"
+        aria-labelledby="cta-header"
+      >
+        <h3
+          id="cta-header"
+          className="sr-only"
+        >
+          Call to Action
+        </h3>
+        <button
+          className="hover:cursor-pointer sm:text-[20px] text-[18px] font-[500] bg-gradient-to-r from-[#6F036C] to-[#FF6F61E5] bg-clip-text text-transparent"
+          onClick={toggleTrysuperchat}
+          aria-label="Try Superchat now and sign up"
         >
           Try Superchat
-        </p>
+        </button>
         <svg
           width="25"
           height="23"
           viewBox="0 0 25 23"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          role="img"
+          aria-label="Arrow icon"
         >
           <path
             d="M7.1684 6C6.89234 6 6.66853 6.22374 6.66853 6.49986C6.66853 6.77592 6.89234 6.99973 7.1684 6.99973H12.2798L2.14921 17.1301C1.95026 17.3291 1.95026 17.6518 2.14921 17.8508C2.34823 18.0497 2.67088 18.0497 2.8699 17.8508L13.0003 7.72053V12.8315C13.0003 13.1075 13.2241 13.3313 13.5001 13.3313C13.7762 13.3313 14 13.1075 14 12.8315V6.49986C14 6.22374 13.7762 6 13.5001 6H7.1684Z"
@@ -66,7 +165,6 @@ export default function LandingPage__Left_Container() {
           />
         </svg>
       </div>
-    </div>
+    </section>
   );
 }
-

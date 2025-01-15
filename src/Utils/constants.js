@@ -9,7 +9,7 @@ export  const Capabilities = [
   export const questionSets = [
     {
       examples: [
-        'What is the difference between AI and Machine Learning?',
+        'What is the difference between ML and DL?',
         'Can you suggest a theme for a science fair?',
         'How do I center a div using CSS?'
       ]
@@ -30,7 +30,7 @@ export  const Capabilities = [
     },
     {
       examples: [
-        'What are the applications of blockchain technology?',
+        'What are the examples of blockchain technology?',
         'How to organize a treasure hunt for kids?',
         'How can I use async/await in JavaScript?'
       ]
@@ -58,9 +58,9 @@ export  const Capabilities = [
     },
     {
       examples: [
-        'What is the greenhouse effect and how does it work?',
+        'What is the greenhouse effect ?',
         'Creative ideas for a school play?',
-        'How can I optimize the performance of a React app?'
+        'How to Optimize Data?'
       ]
     },
     {
