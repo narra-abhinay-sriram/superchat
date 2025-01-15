@@ -2,8 +2,7 @@ import '@fontsource/inter';
 import '@fontsource/inter/600.css';
 import { useState } from 'react';
 import {
-  FaCog,
-  FaBell,
+ 
   FaRegSun,
   FaRegMoon,
   FaRegTrashAlt,
@@ -16,7 +15,6 @@ import { logout } from '../ReduxStateManagement/authslice';
 import { useNavigate } from 'react-router-dom';
 import { changetodarkmode } from '../ReduxStateManagement/user';
 import { clear_chat_api } from '../Utils/Apis';
-import ClearConvoLoading from '../Components/ClearConvoLoading';
 
 export default function ChatbotHeaderSmallScreen() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

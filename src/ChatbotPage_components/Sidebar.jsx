@@ -2,10 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../ReduxStateManagement/authslice";
 import { useNavigate } from "react-router-dom";
 import {
-  FaArrowLeft,
-  FaArrowRight,
-  FaCog,
-  FaBell,
+ 
   FaUserCircle,
   FaRegTrashAlt,
   FaRegMoon,
@@ -17,7 +14,6 @@ import { changesidebarwidth, changetodarkmode } from "../ReduxStateManagement/us
 import { clear_chat_api } from "../Utils/Apis";
 import superchatLogo_white from "../assets/superchat_logo_white.png";
 import { useState } from "react";
-import ClearConvoLoading from "../Components/ClearConvoLoading";
 
 const Sidebar = () => {
   const { darkmode, sidebarReduced } = useSelector((store) => store.user);
