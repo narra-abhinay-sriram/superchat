@@ -33,7 +33,7 @@ export default function AboutUs() {
         <meta name="twitter:description" content="Discover how SuperChat LLC is revolutionizing business communication with innovative AI solutions and cutting-edge technology." />
         
         {/* Canonical and Language */}
-        <link rel="canonical" href={`${baseUrl}/about-us`} />
+        <link rel="canonical" href="https://superchat.in/about-us" />
         <meta name="language" content="en" />
         
         {/* Resource Hints */}

@@ -303,11 +303,7 @@ export default function VoiceInterface() {
                 <meta property="og:title" content="Voice Interface - Interactive Voice Assistant" />
                 <meta property="og:description" content="Experience natural conversation with our AI voice assistant. Featuring real-time speech recognition and intelligent responses." />
                 
-                {/* Twitter */}
-                <meta property="twitter:card" content="summary_large_image" />
-                <meta property="twitter:title" content="Voice Interface - Interactive Voice Assistant" />
-                <meta property="twitter:description" content="Experience natural conversation with our AI voice assistant. Featuring real-time speech recognition and intelligent responses." />
-                
+              
                 {/* Technical Meta Tags */}
                 <meta name="robots" content="index, follow" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />

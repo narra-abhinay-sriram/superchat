@@ -35,7 +35,6 @@ export default function LandingPage_MainContainer() {
     <div className="grid grid-cols-1 sm:grid-cols-3 bg-slate-50 min-h-[300px] gap-4">
       <Helmet>
         {/* Essential Meta Tags */}
-        <title>{PAGE_TITLE}</title>
         <meta name="description" content={PAGE_DESCRIPTION} />
         <meta name="keywords" content="chatbot, AI assistant, customer support, SuperChat, business chat solution, automated support, chat platform" />
         
@@ -46,13 +45,9 @@ export default function LandingPage_MainContainer() {
         <meta property="og:url" content={CANONICAL_URL} />
         <meta property="og:site_name" content="SuperChat" />
         
-        {/* Twitter Card Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={PAGE_TITLE} />
-        <meta name="twitter:description" content={PAGE_DESCRIPTION} />
+      
         
         {/* Canonical URL */}
-        <link rel="canonical" href={CANONICAL_URL} />
         
         {/* Resource Hints */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

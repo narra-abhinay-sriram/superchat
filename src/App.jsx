@@ -16,6 +16,7 @@ import TermsAndConditions from "./LandingPage_components/LandingPage_Footer_Comp
 import PrivacyPolicy  from  "./LandingPage_components/LandingPage_Footer_Components/Privacy_policy"
 import ChatbotInterface from "./pages/Chatbot_Interface";
 import LoadingSpinner from "./Components/Loading";
+import Superchat_translate from "./ChatbotPage_components/Superchat_Translate/superchat_translate";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/terms-conditions" element={<TermsAndConditions />} />
             <Route path="/cancellation-policy" element={<CancellationRefundPolicies />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/translate" element={<Superchat_translate/>} />
 
             {/* 404 Fallback */}
             <Route path="*" element={<div>404 Not Found</div>} />

@@ -446,8 +446,7 @@ const renderInputArea = () => (
         <meta name="keywords" content={seoMetadata.keywords} />
         <meta property="og:title" content={seoMetadata.title} />
         <meta property="og:description" content={seoMetadata.description} />
-        <meta name="twitter:title" content={seoMetadata.title} />
-        <meta name="twitter:description" content={seoMetadata.description} />
+       
         <link rel="canonical" href={"https://superchat.in/chatbot"} />
 
         <meta property="og:url" content={"https://superchat.in/chatbot"} />

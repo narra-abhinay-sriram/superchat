@@ -4,6 +4,7 @@ import LandingPage_Footer from '../LandingPage_Footer';
 import LandingPage_Header from '../LandingPage_Header';
 import { useDispatch } from 'react-redux';
 import { changeforbusiness, changeForDevPage, changeSuperchip } from '../../ReduxStateManagement/user';
+import { Helmet } from "react-helmet-async";
 
 const Super_chip = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,18 @@ const Super_chip = () => {
   }, []);
 
   return (
+    <>
+     <Helmet>
+            <title>Superchat for Business - AI-Powered Enterprise Collaboration Platform</title>
+            <meta name="description" content="Transform your business with Superchat's AI-powered assistant. Secure, seamless integration for messaging, documents, and workflows. Perfect for enterprise collaboration." />
+            <meta name="keywords" content="AI assistant, enterprise collaboration, secure messaging, workflow automation, business productivity" />
+            <meta property="og:title" content="Superchat for Business - Enterprise AI Assistant" />
+            <meta property="og:description" content="Transform your business with Superchat's AI-powered assistant. Secure, seamless integration for enterprise collaboration." />
+            <meta property="og:type" content="website" />
+            <meta name="twitter:card" content="summary_large_image" />
+            <link rel="canonical" href="https://superchat.in/superchip" />
+           
+          </Helmet>
     <div className="min-h-screen flex flex-col">
       {/* Header */}
       <LandingPage_Header />
@@ -72,6 +85,7 @@ const Super_chip = () => {
       {/* Footer */}
       <LandingPage_Footer />
     </div>
+    </>
   );
 };
 

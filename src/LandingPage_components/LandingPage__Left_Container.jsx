@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import '@fontsource/inter';
 import superchatLogo from '../assets/superchat_logo.webp';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function LandingPage__Left_Container() {
+  
+
   const [dynamicWord, setDynamicWord] = useState('chat');
   const navigate = useNavigate();
   const words = ['chat', 'intelligence', 'fast'];
@@ -62,7 +64,6 @@ export default function LandingPage__Left_Container() {
     >
       <Helmet>
         {/* Primary Meta Tags */}
-        <title>{PAGE_TITLE}</title>
         <meta name="description" content={PAGE_DESCRIPTION} />
         <meta name="keywords" content="SuperChat, AI Chatbot, code generation, document analysis, AI assistant, document summarization, AI learning, image analysis, artificial intelligence chat" />
         
@@ -74,13 +75,7 @@ export default function LandingPage__Left_Container() {
         <meta property="og:url" content={BASE_URL} />
         <meta property="og:site_name" content="SuperChat" />
         
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={PAGE_TITLE} />
-        <meta name="twitter:description" content={PAGE_DESCRIPTION} />
-        <meta name="twitter:image" content={`${BASE_URL}/assets/superchat_logo.webp`} />
-        <meta name="twitter:site" content="@SuperChatAI" />
-        
+       
         {/* Additional SEO */}
         <link rel="canonical" href={BASE_URL} />
         <meta name="robots" content="index, follow" />
@@ -101,7 +96,7 @@ export default function LandingPage__Left_Container() {
         <img
           src={superchatLogo}
           alt="Superchat Logo"
-          className="sm:w-[70px] sm:h-[85px] w-12 h-12"
+          className="sm:w-auto sm:h-[85px] w-12 h-auto"
         />
         <h1
           id="superchat-header"
@@ -119,28 +114,25 @@ export default function LandingPage__Left_Container() {
       >
         <h2
           id="superchat-subtitle"
-          className="sm:text-[22px] text-md font-[500] sm:mb-2"
+          className="sm:text-[24px] text-md font-[400] sm:mb-2"
         >
-          Accelerate Conversations, Power Through Data
+          Private LLM for your organisation or Intelligence as a Service
         </h2>
-        <p className="text-base sm:text-lg w-full sm:w-[32rem] text-gray-400 font-normal ">          Chat with AI, create code, teach yourself new things, analyze your
-          documents, summarize large documents, and query documents, images,
-          and more.
-        </p>
+        <h1 className=" mt-3 text-base sm:text-lg w-full sm:w-[32rem] text-gray-800 font-light leading-relaxed [text-rendering:optimizeLegibility] max-w-prose">
+        Still sharing organisation data to the cloud with existing GPT? Switch to us and have your own private LLM within your organisation. 
+        Hardware enabled LLM for your organisation , <Link to={'/contact-us'} className='text-slate-500 font-semibold'> Speak to us today :)</Link>  </h1>
       </div>
 
       {/* Call-to-Action */}
-      <div
-        className="absolute pt-10 sm:top-[360px] sm:left-[102px] left-[15px] top-[310px] flex items-center gap-2"
+      <section
+        className="absolute pt-10 sm:top-[410px] sm:left-[102px] left-[15px] top-[360px] flex items-center gap-2"
         role="region"
         aria-labelledby="cta-header"
       >
-        <h3
-          id="cta-header"
-          className="sr-only"
-        >
+       <h2 id="cta-section-title" className="sr-only">
+
           Call to Action
-        </h3>
+        </h2>
         <button
           className="hover:cursor-pointer  sm:text-[20px] text-[18px] font-[500] bg-gradient-to-r from-[#6F036C] to-[#FF6F61E5] bg-clip-text text-transparent"
           onClick={toggleTrysuperchat}
@@ -163,7 +155,7 @@ export default function LandingPage__Left_Container() {
             fill="#4A0044"
           />
         </svg>
-      </div>
+      </section>
     </section>
   );
 }

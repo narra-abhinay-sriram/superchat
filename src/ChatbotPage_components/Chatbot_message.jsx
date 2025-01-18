@@ -8,7 +8,7 @@ import superchatLogo from "../assets/superchat_logo.webp";
 import superchatLogo_white from "../assets/superchat_logo_white.webp";
 import { useSelector } from "react-redux";
 
-const CopyButton = ({ code }) => {
+ const CopyButton = ({ code }) => {
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopy = async () => {

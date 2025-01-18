@@ -6,33 +6,23 @@ import { Helmet } from 'react-helmet-async';
 export default function LandingPage() {
   // SEO constants
   const SITE_NAME = "Superchat";
-  const PAGE_TITLE = "Welcome to Superchat - The Ultimate Chat Platform";
+  const PAGE_TITLE = "Welcome to Superchat - Private LLM for your organisation | Intelligence as a Service";
   const PAGE_DESCRIPTION = "Experience seamless communication with Superchat's powerful features. Connect instantly, share easily, and chat securely with our next-generation messaging platform.";
   const CANONICAL_URL = "https://superchat.in";
+
+ 
 
   return (
     <>
       <Helmet>
         {/* Primary Meta Tags */}
-        <title>{PAGE_TITLE}</title>
+        <title>{"Welcome to Superchat - Private LLM for your organisation | Intelligence as a Service"}</title>
         <meta name="description" content={PAGE_DESCRIPTION} />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href={CANONICAL_URL} />
         
-        {/* OpenGraph Meta Tags */}
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content={SITE_NAME} />
-        <meta property="og:title" content={PAGE_TITLE} />
-        <meta property="og:description" content={PAGE_DESCRIPTION} />
-        <meta property="og:image" content={`${CANONICAL_URL}/superchat-preview.jpg`} />
-        <meta property="og:url" content={CANONICAL_URL} />
-        <meta property="og:locale" content="en_US" />
 
-        {/* Twitter Card Meta Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={PAGE_TITLE} />
-        <meta name="twitter:description" content={PAGE_DESCRIPTION} />
-        <meta name="twitter:image" content={`${CANONICAL_URL}/superchat-preview.jpg`} />
+
+       
         
         {/* Additional Meta Tags */}
         <meta name="keywords" content="chat platform, messaging, communication, instant messaging, secure chat, real-time chat, superchat" />

@@ -29,9 +29,7 @@ const PrivacyPolicy = () => {
         <meta property="og:description" content="Learn about SuperChat LLC's privacy policy, how we protect your data, and your rights regarding personal information." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://superchat.in/privacy-policy" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Privacy Policy - SuperChat LLC" />
-        <meta name="twitter:description" content="Learn about SuperChat LLC's privacy policy, data protection practices, and your privacy rights." />
+       
       </Helmet>
 
       <header className="fixed top-0 w-full h-16 bg-white shadow z-10" role="banner">

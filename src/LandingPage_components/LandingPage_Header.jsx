@@ -47,7 +47,6 @@ export default function LandingPage_Header() {
     <>
       <Helmet>
         {/* Primary Meta Tags */}
-        <title>{PAGE_TITLE}</title>
         <meta name="description" content={PAGE_DESCRIPTION} />
         <meta name="keywords" content="SuperChat LLC, AI communication platform, developer tools, business solutions, Super Chip technology, enterprise AI, communication automation, AI APIs" />
         <meta name="author" content="SuperChat LLC" />
@@ -60,15 +59,8 @@ export default function LandingPage_Header() {
         <meta property="og:site_name" content="SuperChat LLC" />
         <meta property="og:image" content={`${BASE_URL}/assets/superchat_logo.png`} />
         
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@SuperChatAI" />
-        <meta name="twitter:title" content={PAGE_TITLE} />
-        <meta name="twitter:description" content={PAGE_DESCRIPTION} />
-        <meta name="twitter:image" content={`${BASE_URL}/assets/superchat_logo.png`} />
         
         {/* Additional SEO */}
-        <link rel="canonical" href={BASE_URL} />
         <meta name="robots" content="index, follow" />
         <meta property="og:locale" content="en_US" />
         

@@ -29,9 +29,7 @@ const TermsAndConditions = () => {
         <meta property="og:description" content="Read SuperChat LLC's terms and conditions. Understand your rights and obligations when using our services." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://superchat.in/terms-conditions" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Terms and Conditions - SuperChat LLC" />
-        <meta name="twitter:description" content="Review SuperChat LLC's terms of service and user agreement." />
+        
       </Helmet>
 
       <header className="fixed top-0 w-full h-16 bg-white shadow z-10" role="banner">

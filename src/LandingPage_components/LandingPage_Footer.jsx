@@ -27,24 +27,18 @@ export default function LandingPage_Footer() {
   return (
     <>
       <Helmet>
-        <title>Superchat - Customer Support & Information | Footer Navigation</title>
         <meta name="description" content="Access Superchat's essential information, including privacy policy, terms of service, contact details, and customer support. Connect with us on social media for updates." />
         <meta name="keywords" content="Superchat support, customer service, privacy policy, terms of service, contact information, social media, chat support, help center" />
         <meta name="author" content="Superchat Team" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://superchat.in" />
         
         {/* Open Graph tags for better social sharing */}
         <meta property="og:title" content="Superchat - Customer Support & Information" />
         <meta property="og:description" content="Access Superchat's essential information, including privacy policy, terms of service, contact details, and customer support." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://superchat.in" />
         <meta property="og:site_name" content="Superchat" />
         
-        {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Superchat - Customer Support & Information" />
-        <meta name="twitter:description" content="Access Superchat's essential information, including privacy policy, terms of service, and support details." />
+     
         
         {/* Structured data for better SEO */}
         <script type="application/ld+json">
@@ -67,35 +61,35 @@ export default function LandingPage_Footer() {
 
       <footer className="bg-gray-50 text-black py-6 shadow-sm border-gray-200" role="contentinfo" aria-label="Site footer">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-          <nav aria-label="Footer navigation">
-            <ul className="flex flex-wrap items-center md:justify-start space-x-4 md:space-x-6 mb-4 md:mb-0 text-sm md:text-base">
-              <Link to="/about-us">
-                <li className="mb-2 md:mb-0 transition-all duration-300 text-black hover:text-[#6F036C] hover:scale-105 cursor-pointer hover:underline decoration-[#6F036C]/50">
-                  <span>About Us</span>
-                </li>
-              </Link>
-              <Link to="/terms-conditions">
-                <li className="mb-2 md:mb-0 transition-all duration-300 text-black hover:text-[#6F036C] hover:scale-105 cursor-pointer hover:underline decoration-[#6F036C]/50">
-                  <span>Terms and Conditions</span>
-                </li>
-              </Link>
-              <Link to="/privacy-policy">
-                <li className="mb-2 md:mb-0 transition-all duration-300 text-black hover:text-[#6F036C] hover:scale-105 cursor-pointer hover:underline decoration-[#6F036C]/50">
-                  <span>Privacy Policy</span>
-                </li>
-              </Link>
-              <Link to="/cancellation-policy">
-                <li className="mb-2 md:mb-0 transition-all duration-300 text-black hover:text-[#6F036C] hover:scale-105 cursor-pointer hover:underline decoration-[#6F036C]/50">
-                  <span>Cancellation/Refund Policies</span>
-                </li>
-              </Link>
-              <Link to="/contact-us">
-                <li className="mb-2 md:mb-0 transition-all duration-300 text-black hover:text-[#6F036C] hover:scale-105 cursor-pointer hover:underline decoration-[#6F036C]/50">
-                  <span>Contact Us</span>
-                </li>
-              </Link>
-            </ul>
-          </nav>
+        <nav aria-label="Footer navigation">
+  <ul className="flex flex-wrap items-center md:justify-start space-x-4 md:space-x-6 mb-4 md:mb-0 text-sm md:text-base">
+    <li className="mb-2 md:mb-0">
+      <Link to="/about-us" className="transition-all duration-300 text-black hover:text-[#6F036C] hover:scale-105 cursor-pointer hover:underline decoration-[#6F036C]/50">
+        <span>About Us</span>
+      </Link>
+    </li>
+    <li className="mb-2 md:mb-0">
+      <Link to="/terms-conditions" className="transition-all duration-300 text-black hover:text-[#6F036C] hover:scale-105 cursor-pointer hover:underline decoration-[#6F036C]/50">
+        <span>Terms and Conditions</span>
+      </Link>
+    </li>
+    <li className="mb-2 md:mb-0">
+      <Link to="/privacy-policy" className="transition-all duration-300 text-black hover:text-[#6F036C] hover:scale-105 cursor-pointer hover:underline decoration-[#6F036C]/50">
+        <span>Privacy Policy</span>
+      </Link>
+    </li>
+    <li className="mb-2 md:mb-0">
+      <Link to="/cancellation-policy" className="transition-all duration-300 text-black hover:text-[#6F036C] hover:scale-105 cursor-pointer hover:underline decoration-[#6F036C]/50">
+        <span>Cancellation/Refund Policies</span>
+      </Link>
+    </li>
+    <li className="mb-2 md:mb-0">
+      <Link to="/contact-us" className="transition-all duration-300 text-black hover:text-[#6F036C] hover:scale-105 cursor-pointer hover:underline decoration-[#6F036C]/50">
+        <span>Contact Us</span>
+      </Link>
+    </li>
+  </ul>
+</nav>
 
           <div className="flex space-x-6 items-center" aria-label="Social media links">
             {socialMediaProfiles.map((social) => (

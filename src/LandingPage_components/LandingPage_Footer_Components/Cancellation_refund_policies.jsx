@@ -47,10 +47,7 @@ export default function CancellationRefundPolicies() {
         <meta property="og:url" content={CANONICAL_URL} />
         <meta property="og:site_name" content="SuperChat LLC" />
         
-        {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={PAGE_TITLE} />
-        <meta name="twitter:description" content={PAGE_DESCRIPTION} />
+      
         
         {/* Canonical URL */}
         <link rel="canonical" href={CANONICAL_URL} />
@@ -159,13 +156,13 @@ export default function CancellationRefundPolicies() {
             <div className="ml-2 sm:ml-4">
               <p>
                 <strong>Need assistance? </strong>
-                <Link to="/contactus" className="inline-block transition-all duration-300 text-gray-700 hover:text-[#6F036C] hover:scale-105 hover:underline decoration-[#6F036C]/50">
+                <Link to="/contact-us" className="inline-block transition-all duration-300 text-gray-700 hover:text-[#6F036C] hover:scale-105 hover:underline decoration-[#6F036C]/50">
                   Click here to contact our support team {"->"}
                 </Link>
               </p>
             </div>
           </section>
-        </div>
+        </div> 
 
         <footer className="text-center py-12 mt-8 border-t border-gray-200">
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">

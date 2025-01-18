@@ -33,13 +33,12 @@ export default function DevelopersList({
     <>
       <Helmet>
         {/* Primary Meta Tags */}
-        <title>{metaTitle}</title>
         <meta name="title" content={metaTitle} />
         <meta name="description" content={metaDescription} />
         <meta name="keywords" content={keywords} />
 
         {/* Canonical URL */}
-         <link rel="canonical" href='https://superchat.in/' />
+        <link rel="canonical" href={window.location.href} />
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />

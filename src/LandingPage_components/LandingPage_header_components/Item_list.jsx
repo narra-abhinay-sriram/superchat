@@ -37,7 +37,6 @@ export default function ItemList({
     <>
       <Helmet>
         {/* Primary Meta Tags */}
-        <title>{metaTitle}</title>
         <meta name="title" content={metaTitle} />
         <meta name="description" content={metaDescription} />
         {tags.length > 0 && <meta name="keywords" content={tags.join(", ")} />}

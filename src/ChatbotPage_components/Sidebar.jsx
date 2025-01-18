@@ -8,15 +8,22 @@ import {
   FaRegMoon,
   FaRegSun,
   FaRegUserCircle,
+ 
+  FaGlobe,
+ 
+  FaHeadset,
 } from "react-icons/fa";
 import superchatLogo from "../assets/superchat_logo.webp";
 import { changesidebarwidth, changetodarkmode } from "../ReduxStateManagement/user";
+import {toggleChatbot,toggleTranslate} from '../ReduxStateManagement/chatbot';
 import { clear_chat_api } from "../Utils/Apis";
 import superchatLogo_white from "../assets/superchat_logo_white.webp";
 import { useState } from "react";
 
 const Sidebar = () => {
   const { darkmode, sidebarReduced } = useSelector((store) => store.user);
+  const {chatbot,translate} = useSelector(store =>store.bot);
+
   const [isDeleting, setIsdeleting] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -24,6 +31,16 @@ const Sidebar = () => {
   const toggleSidebar = () => {
     dispatch(changesidebarwidth());
   };
+
+  const handleTranslate = () =>{
+    dispatch (toggleChatbot(false))
+    dispatch(toggleTranslate(true))
+  }
+  
+  const handlechatbot = ()=>{
+    dispatch (toggleChatbot(true))
+    dispatch(toggleTranslate(false))
+  }
 
   const menuItemClass = () =>
     `p-2 rounded-full flex items-center cursor-pointer ${
@@ -115,6 +132,36 @@ const Sidebar = () => {
       {/* Navigation Menu */}
       <nav className="flex flex-col items-start px-4 mt-auto mb-4" role="navigation">
         <ul className="w-full " role="menu">
+          {/*AI assiatnt */}
+          <li className="relative group" role="none">
+            <button
+              className={menuItemClass()}
+              onClick={handlechatbot}
+              role="menuitem"
+              aria-label="Ai assistant"
+              title="Ai assistant"
+            >
+              <FaHeadset aria-hidden="true" className="hover:text-gray-950" />
+              {!sidebarReduced && <span className={`${chatbot ? "underline" : ""} `}>AI Assistant</span>}
+            </button>
+            {sidebarReduced && <div className={tooltipClass} role="tooltip">AI Assistant</div>}
+          </li>
+
+          {/* Translate */}
+          <li className="relative group" role="none">
+            <button
+              className={menuItemClass()}
+              onClick={handleTranslate}
+              role="menuitem"
+              aria-label="Translate"
+              title="Translator"
+            >
+              <FaGlobe aria-hidden="true" className="hover:text-gray-950" />
+              {!sidebarReduced && <span className={`${translate ? "underline" : ""} `}>Translator</span>}
+            </button>
+            {sidebarReduced && <div className={tooltipClass} role="tooltip">Translator</div>}
+          </li>
+
           {/* Theme Toggle */}
           <li className="relative group" role="none">
             <button

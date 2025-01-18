@@ -6,11 +6,13 @@ import useIsSmallScreen from "../customHooks/useIsSmallScreen";
 import { useSelector } from "react-redux";
 import { Suspense,lazy } from 'react';
 import LoadingSpinner from '../Components/Loading';
+import Superchat_translate from '../ChatbotPage_components/Superchat_Translate/superchat_translate';
 const VoiceInterface =lazy(()=>import ('../ChatbotPage_components/BotInterface_components/VoiceInterface'))
 
 export default function ChatbotInterface() {
   const isSmallScreen = useIsSmallScreen();
   const { voiceMode } = useSelector((store) => store.user);
+  const {chatbot,translate} = useSelector(store =>store.bot);
 
   // SEO constants
   const PAGE_TITLE = "Superchat AI Assistant - Interactive Chat Interface";
@@ -104,7 +106,8 @@ export default function ChatbotInterface() {
           role="region"
           aria-label="Chat Area"
         >
-          <BotInterface />
+          {chatbot && <BotInterface/>}
+          {translate && <Superchat_translate/>}
         </section>
       </main>
     </>
