@@ -17,7 +17,6 @@ import { changeVoiceMode } from "../ReduxStateManagement/user";
 import { Helmet } from 'react-helmet-async';
 
 const BotInterface = () => {
-  // Add SEO metadata
   const seoMetadata = {
     title: "Superchat AI Assistant - Intelligent Conversation Interface",
     description: "Engage with our AI-powered chat assistant for intelligent conversations, PDF analysis, and CSV data processing. Experience seamless communication with advanced natural language processing.",
@@ -43,7 +42,6 @@ const BotInterface = () => {
     return questionSets[randomIndex];
   });
 
-  // Authentication check
   if (!localStorage.getItem("token")) {
     navigate("/signup");
   }
@@ -63,6 +61,7 @@ const BotInterface = () => {
     setMessages(savedMessages);
     setChatStarted(savedMessages.length > 0);
   }, []);
+  
 
   useEffect(() => {
     localStorage.setItem("messages", JSON.stringify(messages));
@@ -450,7 +449,7 @@ const renderInputArea = () => (
         <link rel="canonical" href={"https://superchat.in/chatbot"} />
 
         <meta property="og:url" content={"https://superchat.in/chatbot"} />
-
+ 
       </Helmet>
       
       <main
